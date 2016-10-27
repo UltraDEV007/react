@@ -52,5 +52,8 @@
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.2",
     "webpack-node-externals": "^1.5.4"
+  },
+  "dependencies": {
+    "react": "^15.3.2"
   }
 }
