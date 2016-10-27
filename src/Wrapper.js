@@ -3,11 +3,11 @@ import Accounts from 'graphql-accounts';
 
 const Wrapper = ({
   className,
-  children
+  children,
 }) =>
   <div className={className}>
     {children}
-  </div>
+  </div>;
 
 Wrapper.propTypes = {
   className: React.PropTypes.string,

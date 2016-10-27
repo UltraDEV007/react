@@ -10,7 +10,18 @@
   },
 
   "rules": {
-    "strict": 0
+    "strict": 0,
+    "import/no-extraneous-dependencies": 0,
+    "no-underscore-dangle": 0,
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
+    ]
   },
 
   "parserOptions": {
@@ -19,6 +30,10 @@
     "sourceType": "module"
   },
 
-  "extends": [ "eslint:recommended" ]
+  "extends": "airbnb",
+
+  "plugins": [
+    "react"
+  ]
 
 }
