@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router';
+import AccountsClient from 'graphql-accounts';
 import Accounts from './Accounts';
 
 const accountRoutes = ({
   component,
 }) =>
   <Route component={component}>
-    <Route path="/login" component={Accounts} />
+    <Route path={AccountsClient.ui._options.loginPath} component={Accounts} />
   </Route>;
 
 accountRoutes.propTypes = {
