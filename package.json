@@ -58,6 +58,7 @@
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "react": "^15.3.2"
+    "react": "^15.3.2",
+    "react-router": "^3.0.0"
   }
 }

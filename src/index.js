@@ -1,16 +1,6 @@
-import React from 'react';
-import { default as AccountsClient } from 'graphql-accounts';
-import './Wrapper';
-
-const Accounts = ({
-  className,
-}) =>
-  <AccountsClient.ui.Wrapper className={className}>
-    <AccountsClient.ui.Title />
-  </AccountsClient.ui.Wrapper>;
-
-Accounts.propTypes = {
-  className: React.PropTypes.string,
-};
+import Accounts from './Accounts';
+import accountRoutes from './accountRoutes';
 
 export default Accounts;
+
+export { accountRoutes };
