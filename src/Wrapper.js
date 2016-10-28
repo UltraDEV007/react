@@ -4,14 +4,16 @@ import Accounts from 'graphql-accounts';
 const Wrapper = ({
   className,
   children,
+  style,
 }) =>
-  <div className={className}>
+  <div className={className} style={style}>
     {children}
   </div>;
 
 Wrapper.propTypes = {
   className: React.PropTypes.string,
   children: React.PropTypes.node,
+  style: React.PropTypes.object,
 };
 
 export default Wrapper;
