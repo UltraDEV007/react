@@ -12,12 +12,23 @@ const defaultStyle = {
   fields: {
 
   },
+  buttons: {
+    wrapper: {
+
+    },
+    button: {
+
+    },
+  },
 };
+
+export { defaultStyle };
 
 const {
   Wrapper,
   Title,
   Fields,
+  Buttons,
 } = AccountsClient.ui;
 
 const Accounts = ({
@@ -27,6 +38,7 @@ const Accounts = ({
   <Wrapper className={className} style={style.wrapper}>
     <Title style={style.title} />
     <Fields style={style.fields} />
+    <Buttons style={style.buttons} />
   </Wrapper>;
 
 Accounts.propTypes = {
