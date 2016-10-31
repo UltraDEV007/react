@@ -1,5 +1,5 @@
 import React from 'react';
-import Accounts from 'graphql-accounts';
+import Accounts from '@accounts/accounts';
 
 const Wrapper = ({
   className,

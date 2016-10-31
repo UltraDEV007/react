@@ -1,5 +1,5 @@
 import React from 'react';
-import { default as AccountsClient } from 'graphql-accounts';
+import { default as AccountsClient } from '@accounts/accounts';
 import './Wrapper';
 
 const defaultStyle = {
