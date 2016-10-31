@@ -1,12 +1,12 @@
 {
-  "name": "react-accounts",
+  "name": "@accounts/react",
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack -p --config --progress --watch",
-    "compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile",
+    "start": "webpack -d --progress --watch",
+    "bundle": "webpack -p --progress",
+    "prepublish": "npm run bundle",
     "test": "mocha --compilers js:babel-core/register \"src/**/*.spec.js\"",
     "lint": "eslint src",
     "coverage": "istanbul cover _mocha -- --compilers js:babel-core/register \"src/**/*.spec.js\" -R spec",
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/graphql-accounts/react-accounts.git"
+    "url": "git+https://github.com/graphql-accounts/react.git"
   },
   "keywords": [
     "react",
@@ -26,9 +26,9 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/graphql-accounts/react-accounts/issues"
+    "url": "https://github.com/graphql-accounts/react/issues"
   },
-  "homepage": "https://github.com/graphql-accounts/react-accounts#readme",
+  "homepage": "https://github.com/graphql-accounts/react#readme",
   "devDependencies": {
     "babel-cli": "^6.16.0",
     "babel-core": "^6.17.0",
