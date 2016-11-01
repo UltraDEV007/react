@@ -5,6 +5,7 @@ module.exports = {
   entry: './src/index.js',
   target: 'node',
   externals: [nodeExternals()],
+  devtool: 'eval-source-map',
   output: {
     path: path.join(__dirname, '/lib'),
     filename: 'index.js',

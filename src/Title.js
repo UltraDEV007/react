@@ -11,6 +11,6 @@ Title.propTypes = {
 
 export default Title;
 
-if (!Accounts.ui.Wrapper) {
+if (!Accounts.ui.Title) {
   Accounts.ui.Title = Title;
 }
