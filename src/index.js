@@ -33,7 +33,7 @@ export { renderFormComponent };
 const connectAccounts = (Component) => {
   const mapStateToProps = (state) => {
     // In case the consuming appplication has an immutable redux store
-    const accounts = Accounts.getAccountsState(state);
+    const accounts = Accounts.getState(state);
     return ({
       formType: accounts.formType,
       login: accounts.forms.login,
