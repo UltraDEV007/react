@@ -15,8 +15,17 @@ const connectAccounts = (Component) => {
     });
   };
 
-  const mapDispatchToProps = () => ({
-    onSubmitLogin: ({ user, password }) => Accounts.login({ user, password }),
+  const mapDispatchToProps = (dispatch, { history }) => ({
+    onSubmitLogin: async ({ user, password }) => {
+      try {
+        await Accounts.login({ user, password });
+        // On succesful login, redirect the browser
+        history.push(Accounts.ui._options.homeRoutePath);
+      } catch (err) {
+        // TODO Handle error
+        console.log(err);
+      }
+    },
     onChangeField: ({ form, field, value }) => Accounts.setField({ form, field, value }),
   });
 
