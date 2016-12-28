@@ -1,6 +1,6 @@
 import FormTypes from './FormTypes';
-import renderFormComponent from './renderFormComponent';
+import Form from './Form';
 
 export { FormTypes };
 
-export { renderFormComponent };
+export { Form };

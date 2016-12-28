@@ -6,7 +6,7 @@ const accountRoutes = ({
   component,
 }) =>
   <Route>
-    <Route path={AccountsClient.ui._options.loginPath} component={AccountsClient.ui.Form} />
+    <Route path={AccountsClient.ui._options.loginPath} component={AccountsClient.ui.LoginForm} />
   </Route>;
 
 accountRoutes.propTypes = {
