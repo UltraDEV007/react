@@ -1,12 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router';
 import { AccountsClient } from '@accounts/accounts';
+import FormTypes from './FormTypes';
 
-const accountRoutes = ({
-  component,
-}) =>
+const accountRoutes = () =>
   <Route>
-    <Route path={AccountsClient.ui._options.loginPath} component={AccountsClient.ui.LoginForm} />
+    <Route
+      path={AccountsClient.options().loginPath}
+      component={() => <AccountsClient.ui.Accounts formType={FormTypes.LOGIN} />}
+    />
   </Route>;
 
 accountRoutes.propTypes = {

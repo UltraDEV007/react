@@ -42,7 +42,7 @@ const signupForm = () => new Form('signup', {
   }),
 });
 
-class AccountsForm extends Component {
+class Accounts extends Component {
   static propTypes = {
     formType: PropTypes.string,
   }
@@ -76,4 +76,4 @@ class AccountsForm extends Component {
   }
 }
 
-export default AccountsForm;
+export default Accounts;

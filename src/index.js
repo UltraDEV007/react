@@ -1,11 +1,13 @@
+import accountRoutes from './accountRoutes';
 import FormTypes from './FormTypes';
-import Form from './Form';
+import Accounts from './Accounts';
 import SignupFields from './SignupFields';
 import LoginFields from './LoginFields';
 
 export {
+  accountRoutes,
   FormTypes,
-  Form,
+  Accounts,
   SignupFields,
   LoginFields,
 };
