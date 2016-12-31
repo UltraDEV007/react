@@ -19,6 +19,9 @@ const signupForm = () => new Form('signup', {
     password: {
 
     },
+    passwordConfirm: {
+
+    },
     // eslint-disable-next-line consistent-return
     ...(() => {
       const {
