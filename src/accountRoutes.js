@@ -9,6 +9,10 @@ const accountRoutes = () =>
       path={AccountsClient.options().loginPath}
       component={() => <AccountsClient.ui.Accounts formType={FormTypes.LOGIN} />}
     />
+    <Route
+      path={AccountsClient.options().signUpPath}
+      component={() => <AccountsClient.ui.Accounts formType={FormTypes.SIGNUP} />}
+    />
   </Route>;
 
 accountRoutes.propTypes = {
