@@ -33,7 +33,7 @@ const signupForm = () => new Form('signup', {
     },
     passwordConfirm: {
       validate: [
-        (confirmPassword, { form }) => confirmPassword.length !== form.getFields().getIn(['password', 'value'])
+        (confirmPassword, { form }) => confirmPassword !== form.getField('password').get('value')
           && 'Passwords do not match',
       ],
     },
