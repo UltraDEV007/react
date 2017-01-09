@@ -1,15 +1,23 @@
 import React, { PropTypes, Component } from 'react';
-import { AccountsClient, PasswordSignupFields } from '@accounts/accounts';
+import { AccountsClient, PasswordSignupFields, isEmail } from '@accounts/accounts';
 import { Form, connectForm } from 'immutable-form';
 import FormTypes from './FormTypes';
+
+const validateUser = user => user.trim().length === 0 && 'Username or email is required';
+const validateUsername = username => username.trim().length === 0 && 'Username is required';
+const validateEmail = email => !isEmail(email) && 'Not a valid email address';
 
 const loginForm = () => new Form('login', {
   fields: {
     user: {
-
+      validate: [
+        validateUser,
+      ],
     },
     password: {
-
+      validate: [
+        password => password.length === 0 && 'Password is required',
+      ],
     },
   },
 });
@@ -17,10 +25,17 @@ const loginForm = () => new Form('login', {
 const signupForm = () => new Form('signup', {
   fields: ({
     password: {
-
+      validate: [
+        password =>
+          password.length < AccountsClient.options().minimumPasswordLength
+            && `Password must be at least ${AccountsClient.options().minimumPasswordLength} characters`,
+      ],
     },
     passwordConfirm: {
-
+      validate: [
+        (confirmPassword, { form }) => confirmPassword.length !== form.getFields().getIn(['password', 'value'])
+          && 'Passwords do not match',
+      ],
     },
     // eslint-disable-next-line consistent-return
     ...(() => {
@@ -32,18 +47,41 @@ const signupForm = () => new Form('signup', {
     } = PasswordSignupFields;
       switch (AccountsClient.options().passwordSignupFields) {
         case EMAIL_ONLY:
-          return { email: {} };
+          return {
+            email: {
+              validate: [
+                validateEmail,
+              ],
+            },
+          };
         case USERNAME_ONLY:
-          return { username: {} };
+          return {
+            username: {
+              validate: [
+                validateUsername,
+              ],
+            },
+          };
         case USERNAME_AND_EMAIL:
         case USERNAME_AND_OPTIONAL_EMAIL:
-          return { username: {}, email: {} };
+          return {
+            username: {
+              validate: [
+                validateUsername,
+              ],
+            },
+            email: {
+              validate: [
+                validateEmail,
+              ],
+            },
+          };
         default:
           break;
       }
     })(),
   }),
-});
+}).setSubmit(() => AccountsClient.createUser());
 
 class Accounts extends Component {
   static propTypes = {
