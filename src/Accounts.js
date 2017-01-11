@@ -1,11 +1,11 @@
 import React, { PropTypes, Component } from 'react';
-import { AccountsClient, PasswordSignupFields, isEmail } from '@accounts/accounts';
+import { AccountsClient, PasswordSignupFields, validators } from '@accounts/accounts';
 import { Form, connectForm } from 'immutable-form';
 import FormTypes from './FormTypes';
 
 const validateUser = user => user.trim().length === 0 && 'Username or email is required';
 const validateUsername = username => username.trim().length === 0 && 'Username is required';
-const validateEmail = email => !isEmail(email) && 'Not a valid email address';
+const validateEmail = email => !validators.isEmail(email) && 'Not a valid email address';
 
 const loginForm = () => new Form('login', {
   fields: {
@@ -20,7 +20,11 @@ const loginForm = () => new Form('login', {
       ],
     },
   },
-});
+}).setSubmit(form =>
+  AccountsClient.loginWithPassword(
+    form.getField('user').get('value'),
+    form.getField('password').get('value'))
+  );
 
 const signupForm = () => new Form('signup', {
   fields: ({
