@@ -67,9 +67,8 @@ const SignupFields = ({ form, fields }) => {
         </div>
       );
     default:
-      break;
+      return null;
   }
-  return null;
 };
 
 SignupFields.propTypes = {
