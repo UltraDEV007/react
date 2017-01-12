@@ -32,27 +32,24 @@ const SignupFields = ({ form, fields }) => {
     USERNAME_AND_EMAIL,
     USERNAME_AND_OPTIONAL_EMAIL,
   } = PasswordSignupFields;
-  let jsx;
   switch (AccountsClient.options().passwordSignupFields) {
     case EMAIL_ONLY:
-      jsx = (
+      return (
         <div>
           <AccountsClient.ui.EmailField {...emailProps({ form, fields })} />
           <AccountsClient.ui.PasswordField {...passwordProps({ form, fields })} />
           <AccountsClient.ui.PasswordConfirmField {...passwordConfirmProps({ form, fields })} />
         </div>);
-      break;
     case USERNAME_ONLY:
-      jsx = (
+      return (
         <div>
           <AccountsClient.ui.UsernameField {...usernameProps({ form, fields })} />
           <AccountsClient.ui.PasswordField {...passwordProps({ form, fields })} />
           <AccountsClient.ui.PasswordConfirmField {...passwordConfirmProps({ form, fields })} />
         </div>
       );
-      break;
     case USERNAME_AND_EMAIL:
-      jsx = (
+      return (
         <div>
           <AccountsClient.ui.UsernameField {...usernameProps({ form, fields })} />
           <AccountsClient.ui.EmailField {...emailProps({ form, fields })} />
@@ -60,9 +57,8 @@ const SignupFields = ({ form, fields }) => {
           <AccountsClient.ui.PasswordConfirmField {...passwordConfirmProps({ form, fields })} />
         </div>
       );
-      break;
     case USERNAME_AND_OPTIONAL_EMAIL:
-      jsx = (
+      return (
         <div>
           <AccountsClient.ui.UsernameField {...usernameProps({ form, fields })} />
           <AccountsClient.ui.EmailOptionalField {...emailProps({ form, fields })} />
@@ -70,11 +66,10 @@ const SignupFields = ({ form, fields }) => {
           <AccountsClient.ui.PasswordConfirmField {...passwordConfirmProps({ form, fields })} />
         </div>
       );
-      break;
     default:
       break;
   }
-  return jsx;
+  return null;
 };
 
 SignupFields.propTypes = {
