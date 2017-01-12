@@ -1,12 +1,12 @@
 {
   "name": "@accounts/react",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack -d --progress --watch",
     "bundle": "webpack -p --progress",
-    "prepublish": "npm run bundle",
+    "prepublish": "yarn run bundle",
     "test": "mocha --compilers js:babel-core/register \"src/**/*.spec.js\"",
     "lint": "eslint src",
     "coverage": "istanbul cover _mocha -- --compilers js:babel-core/register \"src/**/*.spec.js\" -R spec",
@@ -59,9 +59,11 @@
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "webpack": "^1.13.2",
-    "webpack-node-externals": "^1.5.4"
+    "webpack-node-externals": "^1.5.4",
+    "yarn": "^0.17.10"
   },
   "dependencies": {
+    "immutable-form": "^0.0.8",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
