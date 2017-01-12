@@ -85,7 +85,11 @@ const signupForm = () => new Form('signup', {
       }
     })(),
   }),
-}).setSubmit(() => AccountsClient.createUser());
+}).setSubmit(form => AccountsClient.createUser({
+  password: form.getField('password').get('value'),
+  username: form.getField('username').get('value'),
+  email: form.getField('email').get('value'),
+}));
 
 class Accounts extends Component {
   static propTypes = {
