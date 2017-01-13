@@ -25,6 +25,7 @@ const loginForm = () => new Form('login', {
     form.getField('user').get('value'),
     form.getField('password').get('value')
   ).catch((err) => {
+    console.log(err);
     form.addError(err.serialize().message);
   }));
 

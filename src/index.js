@@ -4,6 +4,7 @@ import Accounts from './Accounts';
 import SignupFields from './SignupFields';
 import LoginFields from './LoginFields';
 import withUser from './withUser';
+import Authenticated from './Authenticated';
 
 export {
   accountRoutes,
@@ -12,4 +13,5 @@ export {
   SignupFields,
   LoginFields,
   withUser,
+  Authenticated,
 };
