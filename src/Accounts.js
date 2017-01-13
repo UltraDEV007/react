@@ -23,8 +23,10 @@ const loginForm = () => new Form('login', {
 }).setSubmit(form =>
   AccountsClient.loginWithPassword(
     form.getField('user').get('value'),
-    form.getField('password').get('value'))
-  );
+    form.getField('password').get('value')
+  ).catch((err) => {
+    form.addError(err.serialize().message);
+  }));
 
 const signupForm = () => new Form('signup', {
   fields: ({
@@ -89,6 +91,8 @@ const signupForm = () => new Form('signup', {
   password: form.getField('password').get('value'),
   username: form.getField('username').get('value'),
   email: form.getField('email').get('value'),
+}).catch((err) => {
+  form.addError(err.serialize().message);
 }));
 
 class Accounts extends Component {
