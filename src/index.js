@@ -3,6 +3,7 @@ import FormTypes from './FormTypes';
 import Accounts from './Accounts';
 import SignupFields from './SignupFields';
 import LoginFields from './LoginFields';
+import withUser from './withUser';
 
 export {
   accountRoutes,
@@ -10,4 +11,5 @@ export {
   Accounts,
   SignupFields,
   LoginFields,
+  withUser,
 };
