@@ -8,15 +8,17 @@ const withUser = Component => class Wrapper extends React.Component {
     this.user = this.store.getState().getIn(['accounts', 'user']);
   }
   componentDidMount() {
+    this.mounted = true;
     this.unsubscribe = this.store.subscribe(() => {
       const user = this.store.getState().getIn(['accounts', 'user']);
-      if (!user.equals(this.user)) {
+      if (this.mounted && !user.equals(this.user)) {
         this.user = user;
         this.forceUpdate();
       }
     });
   }
   componentWillUnmount() {
+    this.mounted = false;
     this.unsubscribe();
   }
   render() {
