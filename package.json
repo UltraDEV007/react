@@ -1,73 +1,24 @@
 {
-  "name": "@accounts/react",
-  "version": "0.0.1",
-  "description": "",
-  "main": "lib/index.js",
   "scripts": {
-    "start": "webpack -d --progress --watch",
-    "bundle": "webpack -p --progress",
-    "prepublish": "yarn run bundle",
-    "test": "mocha --compilers js:babel-core/register \"src/**/*.spec.js\"",
-    "lint": "eslint src",
-    "coverage": "istanbul cover _mocha -- --compilers js:babel-core/register \"src/**/*.spec.js\" -R spec",
-    "coveralls": "istanbul cover _mocha --report lcovonly -- --compilers js:babel-core/register \"src/**/*.spec.js\" -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
+    "start": "lerna exec -- npm start",
+    "link": "lerna exec -- npm link",
+    "compile": "lerna run compile",
+    "lint": "lerna run lint",
+    "prebootstrap": "npm install",
+    "postinstall": "lerna bootstrap",
+    "pretest": "npm run compile",
+    "test": "npm run testonly",
+    "posttest": "npm run lint",
+    "testonly": "lerna run testonly",
+    "coverage": "lerna run coverage",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/graphql-accounts/react.git"
+    "url": "https://github.com/js-accounts/react"
   },
-  "keywords": [
-    "react",
-    "auth",
-    "authentication",
-    "accounts",
-    "users"
-  ],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/graphql-accounts/react/issues"
-  },
-  "homepage": "https://github.com/graphql-accounts/react#readme",
+  "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-core": "^6.17.0",
-    "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-react": "^1.0.0",
-    "babel-plugin-syntax-async-functions": "^6.13.0",
-    "babel-plugin-transform-async-to-generator": "^6.16.0",
-    "babel-plugin-transform-class-properties": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
-    "babel-plugin-transform-regenerator": "^6.16.1",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-es2015-node4": "^2.1.0",
-    "babel-preset-react": "^6.16.0",
-    "chai": "^3.5.0",
-    "chai-as-promised": "^6.0.0",
-    "coveralls": "^2.11.14",
-    "eslint": "^3.7.1",
-    "eslint-config-airbnb": "^12.0.0",
-    "eslint-config-airbnb-base": "^9.0.0",
-    "eslint-plugin-import": "^2.0.1",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
-    "eslint-plugin-react": "^6.4.1",
-    "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^3.1.0",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "sinon": "^1.17.6",
-    "sinon-chai": "^2.8.0",
-    "webpack": "^1.13.2",
-    "webpack-node-externals": "^1.5.4",
-    "yarn": "^0.17.10"
-  },
-  "dependencies": {
-    "immutable-form": "^0.0.10",
-    "react": "^15.3.2",
-    "react-redux": "^4.4.5",
-    "react-router": "^3.0.0",
-    "recompose": "^0.20.2",
-    "redux": "^3.6.0"
+    "lerna": "2.0.0-beta.32"
   }
 }

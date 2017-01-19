@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router';
-import { AccountsClient } from '@accounts/accounts';
+import AccountsClient from '@accounts/client';
 import FormTypes from './FormTypes';
 
 const accountRoutes = () =>
@@ -14,9 +14,5 @@ const accountRoutes = () =>
       component={() => <AccountsClient.ui.Accounts formType={FormTypes.SIGNUP} />}
     />
   </Route>;
-
-accountRoutes.propTypes = {
-  component: React.PropTypes.node,
-};
 
 export default accountRoutes;

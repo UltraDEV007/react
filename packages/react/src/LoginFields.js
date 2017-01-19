@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { AccountsClient } from '@accounts/accounts';
+import AccountsClient from '@accounts/client';
 
 const LoginFields = ({ form, fields }) =>
   <div>
