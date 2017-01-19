@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
-import { AccountsClient, PasswordSignupFields } from '@accounts/accounts';
+import AccountsClient from '@accounts/client';
+import { PasswordSignupFields } from '@accounts/common';
 
 const emailProps = ({ form, fields }) => ({
   value: fields.getIn(['email', 'value']),

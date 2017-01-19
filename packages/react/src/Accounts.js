@@ -1,5 +1,6 @@
 import React, { PropTypes, Component } from 'react';
-import { AccountsClient, PasswordSignupFields, validators } from '@accounts/accounts';
+import AccountsClient from '@accounts/client';
+import { PasswordSignupFields, validators } from '@accounts/common';
 import { Form, connectForm } from 'immutable-form';
 import FormTypes from './FormTypes';
 
@@ -25,7 +26,6 @@ const loginForm = () => new Form('login', {
     form.getField('user').get('value'),
     form.getField('password').get('value')
   ).catch((err) => {
-    console.log(err);
     form.addError(err.serialize().message);
   }));
 
