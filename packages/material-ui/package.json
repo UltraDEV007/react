@@ -81,8 +81,8 @@
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "@accounts/client": "^0.0.1",
-    "@accounts/common": "^0.0.1",
+    "@accounts/client": "0.0.2",
+    "@accounts/common": "0.0.2",
     "@accounts/react": "^0.0.1",
     "flexbox-react": "^4.1.0",
     "material-ui": "^0.16.4",
