@@ -1,11 +1,11 @@
 {
   "name": "@accounts/react",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React frontend for js-accounts",
   "main": "lib/index.js",
   "scripts": {
     "start": "webpack -p --config --progress --watch",
-    "compile": "webpack -p --config --progress",
+    "compile": "babel ./src --out-dir ./lib",
     "flow:check": "flow check",
     "prepublish": "npm run compile",
     "pretest": "npm run lint",
@@ -74,8 +74,8 @@
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "@accounts/client": "^0.0.1",
-    "@accounts/common": "^0.0.1",
+    "@accounts/client": "0.0.2",
+    "@accounts/common": "0.0.2",
     "immutable-form": "^0.0.10",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
