@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
-import {
-  RaisedButton,
-} from 'material-ui';
+import RaisedButton from 'material-ui/RaisedButton';
 import AccountsClient from '@accounts/client';
 import { FormTypes, LoginFields } from '@accounts/react';
 
