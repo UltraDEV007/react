@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "lerna exec -- npm start",
-    "link": "lerna exec -- npm link",
+    "link": "lerna exec -- npm link @accounts/client; lerna exec -- npm link @accounts/common; lerna exec -- npm link",
     "compile": "lerna run compile",
     "lint": "lerna run lint",
     "prebootstrap": "npm install",
