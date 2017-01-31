@@ -24,7 +24,7 @@ const loginForm = () => new Form('login', {
 }).setSubmit(form =>
   AccountsClient.loginWithPassword(
     form.getField('user').get('value'),
-    form.getField('password').get('value')
+    form.getField('password').get('value'),
   ).catch((err) => {
     form.addError(err.serialize().message);
   }));
