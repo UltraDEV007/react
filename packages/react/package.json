@@ -74,8 +74,8 @@
     "webpack-node-externals": "^1.5.4"
   },
   "dependencies": {
-    "@accounts/client": "0.0.2",
-    "@accounts/common": "0.0.2",
+    "@accounts/client": "0.0.3",
+    "@accounts/common": "0.0.3",
     "immutable-form": "^0.0.10",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
