@@ -21,7 +21,7 @@ const loginForm = () => new Form('login', {
       ],
     },
   },
-}).setSubmit(form =>
+}).setSubmit(({ form }) =>
   AccountsClient.loginWithPassword(
     form.getField('user').get('value'),
     form.getField('password').get('value'),
@@ -88,7 +88,7 @@ const signupForm = () => new Form('signup', {
       }
     })(),
   }),
-}).setSubmit(form => AccountsClient.createUser({
+}).setSubmit(({ form }) => AccountsClient.createUser({
   password: form.getField('password').get('value'),
   username: form.getField('username').get('value'),
   email: form.getField('email').get('value'),
