@@ -1,6 +1,6 @@
 {
   "name": "@accounts/react-material-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "React frontend build with material-ui for js-accounts",
   "main": "lib/index.js",
   "scripts": {
@@ -75,7 +75,7 @@
   "dependencies": {
     "@accounts/client": "0.0.3",
     "@accounts/common": "0.0.3",
-    "@accounts/react": "^0.0.3",
+    "@accounts/react": "^0.0.4",
     "flexbox-react": "^4.1.0",
     "material-ui": "^0.16.4",
     "react-dom": "^15.4.0",
