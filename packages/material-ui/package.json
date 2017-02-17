@@ -4,7 +4,7 @@
   "description": "React frontend build with material-ui for js-accounts",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack -p --config --progress --watch",
+    "start": "babel --watch ./src --out-dir ./lib",
     "compile": "babel ./src --out-dir ./lib",
     "flow:check": "flow check",
     "prepublish": "npm run compile",

@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import AccountsClient from '@accounts/client';
+import Accounts from '@accounts/client';
 import FormTypes from './FormTypes';
 
 class Authenticated extends React.Component {
@@ -8,7 +8,7 @@ class Authenticated extends React.Component {
   }
   constructor(props, context) {
     super(props, context);
-    this.store = AccountsClient.instance.store;
+    this.store = Accounts.instance.store;
     this.user = this.store.getState().getIn(['accounts', 'user']);
   }
   componentDidMount() {
@@ -25,7 +25,7 @@ class Authenticated extends React.Component {
   }
   render() {
     if (this.user.isEmpty()) {
-      return <AccountsClient.ui.Accounts formType={FormTypes.LOGIN} />;
+      return <Accounts.ui.Accounts formType={FormTypes.LOGIN} />;
     }
     return this.props.children;
   }
