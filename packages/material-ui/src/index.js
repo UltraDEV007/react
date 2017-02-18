@@ -1,4 +1,3 @@
-import '@accounts/react';
-import * as Login from './login';
+import DefaultLayout from './DefaultLayout';
 
-export { Login };
+export { DefaultLayout };

@@ -1,8 +1,8 @@
 import { withProps } from 'recompose';
 import Accounts from '@accounts/client';
 
-const withClient = withProps(() => ({
+const withAccounts = withProps(() => ({
   accounts: Accounts,
 }));
 
-export default withClient;
+export default withAccounts;

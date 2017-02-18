@@ -1,9 +1,7 @@
-import * as Login from './login';
-import withClient from './withClient';
-import Accounts from './Accounts';
+import withAccounts from './withAccounts';
+import DefaultLayout from './DefaultLayout';
 
 export {
-  Login,
-  withClient,
-  Accounts,
+  withAccounts,
+  DefaultLayout,
 };

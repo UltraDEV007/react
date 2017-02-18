@@ -8,6 +8,7 @@ import signupForm from './signupForm';
 class Accounts extends Component {
   static propTypes = {
     formType: PropTypes.string,
+    components: PropTypes.object,
   }
   static defaultProps = {
     formType: FormTypes.LOGIN,
@@ -24,13 +25,14 @@ class Accounts extends Component {
     });
   }
   render() {
+    const { Login, Signup } = this.props.components;
     let ConnectedForm;
     switch (this.state.formType) {
       case FormTypes.LOGIN:
-        ConnectedForm = connectForm(loginForm)(<AccountsClient.ui.login.Form />);
+        ConnectedForm = connectForm(loginForm)(<Login />);
         break;
       case FormTypes.SIGNUP:
-        ConnectedForm = connectForm(signupForm)(<AccountsClient.ui.signup.Form />);
+        ConnectedForm = connectForm(signupForm)(<Signup />);
         break;
       default:
         break;
