@@ -3,12 +3,12 @@ import AccountsClient from '@accounts/client';
 import { connectForm } from 'immutable-form';
 import FormTypes from './FormTypes';
 import loginForm from './loginForm';
-import signupForm from './signupForm';
 
 class Accounts extends Component {
   static propTypes = {
     formType: PropTypes.string,
-    components: PropTypes.object,
+    Login: PropTypes.node,
+    Signup: PropTypes.node,
   }
   static defaultProps = {
     formType: FormTypes.LOGIN,
@@ -25,14 +25,17 @@ class Accounts extends Component {
     });
   }
   render() {
-    const { Login, Signup } = this.props.components;
+    const {
+      Login,
+      Signup,
+    } = this.props;
     let ConnectedForm;
     switch (this.state.formType) {
       case FormTypes.LOGIN:
         ConnectedForm = connectForm(loginForm)(<Login />);
         break;
       case FormTypes.SIGNUP:
-        ConnectedForm = connectForm(signupForm)(<Signup />);
+        ConnectedForm = connectForm(loginForm)(<Signup />);
         break;
       default:
         break;

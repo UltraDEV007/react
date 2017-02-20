@@ -1,53 +1,34 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 const DefaultLayout = ({
-  components,
-  handleSubmitLogin,
-  handleSubmitSignup,
-}) => {
-  const {
-      Container,
-      Header,
-      Content,
-      Avatar,
-      LoginFields,
-      LoginUserField,
-      LoginPasswordField,
-      SignupFields,
-      LoginButton,
-      SignupButton,
-      RecoverButton,
-      Footer } = components;
-  return (
-    <Container>
-      <Header />
-      <Content>
-        <Avatar />
-        <LoginFields>
-          <LoginUserField />
-          <LoginPasswordField />
-        </LoginFields>
-        <LoginButton />
-        <RecoverButton />
-      </Content>
-      <SignupButton />
-      <Footer />
-    </Container>
+  Container,
+  Header,
+  Content,
+  Footer,
+  children,
+}) => (
+  <Container>
+    <Header />
+    <Content>
+      {children}
+    </Content>
+    <Footer />
+  </Container>
   );
+
+
+DefaultLayout.propTypes = {
+  children: PropTypes.node,
+  Container: PropTypes.node,
+  Header: PropTypes.node,
+  Content: PropTypes.node,
+  Footer: PropTypes.node,
 };
 
 DefaultLayout.defaultProps = {
   Container: () => <div />,
   Header: () => <div />,
   Content: () => <div />,
-  Avatar: () => <div />,
-  LoginFields: () => <div />,
-  LoginUserField: () => <div />,
-  LoginPasswordField: () => <div />,
-  SignupFields: () => <div />,
-  LoginButton: () => <div />,
-  SignupButton: () => <div />,
-  RecoverButton: () => <div />,
   Footer: () => <div />,
 };
 

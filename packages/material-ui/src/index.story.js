@@ -1,29 +1,34 @@
 import React, { PropTypes } from 'react';
 import { storiesOf } from '@kadira/storybook';
 import { withContext } from 'recompose';
-// import Accounts from '@accounts/client';
-import { DefaultLayout } from './index';
+import { PasswordSignupFields } from '@accounts/common';
+import { Accounts } from './index';
 import './font.css';
 
-const Accounts = {
-  options: () => ({
-    title: 'Site Title',
-  }),
-};
-
-const DefaultLayoutWithContext = withContext({
+const AccountsWithContext = withContext({
   accounts: PropTypes.object,
 }, () => ({
-  accounts: Accounts,
-}))(DefaultLayout);
+  accounts: {
+    options: () => ({
+      title: 'Site Title',
+      passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
+    }),
+  },
+}))(Accounts);
+
+const style = {
+  marginTop: 75,
+};
 
 storiesOf('Accounts', module)
-  .add('default layout', () => (
-    <div
-      style={{
-        marginTop: 75,
-      }}
-    >
-      <DefaultLayoutWithContext />
+  .add('login', () => (
+    <div style={style}>
+      <AccountsWithContext formType="login" />
     </div>
-  ));
+  ))
+  .add('signup', () => (
+    <div style={style}>
+      <AccountsWithContext formType="signup" />
+    </div>
+  ),
+);
