@@ -1,8 +1,7 @@
 import React, { PropTypes, Component } from 'react';
 import AccountsClient from '@accounts/client';
-import { connectForm } from 'immutable-form';
 import FormTypes from './FormTypes';
-import loginForm from './loginForm';
+import connectLoginForm from './connectLoginForm';
 
 class Accounts extends Component {
   static propTypes = {
@@ -32,10 +31,7 @@ class Accounts extends Component {
     let ConnectedForm;
     switch (this.state.formType) {
       case FormTypes.LOGIN:
-        ConnectedForm = connectForm(loginForm)(<Login />);
-        break;
-      case FormTypes.SIGNUP:
-        ConnectedForm = connectForm(loginForm)(<Signup />);
+        ConnectedForm = connectLoginForm(<Login />);
         break;
       default:
         break;
