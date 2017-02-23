@@ -4,6 +4,11 @@ import { withContext } from 'recompose';
 import { PasswordSignupFields } from '@accounts/common';
 import { Accounts } from './index';
 import './font.css';
+import AccountsClient from '@accounts/client';
+
+AccountsClient.config({
+  passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
+}, {});
 
 const AccountsWithContext = withContext({
   accounts: PropTypes.object,

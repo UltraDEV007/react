@@ -6,6 +6,6 @@ import Signup from './Signup';
 export default ({ ...otherProps }) =>
   <Accounts
     Login={loginProps => <Login {...loginProps} {...otherProps} />}
-    Signup={() => <Signup {...otherProps} />}
+    Signup={signupProps => <Signup {...signupProps} {...otherProps} />}
     {...otherProps}
   />;

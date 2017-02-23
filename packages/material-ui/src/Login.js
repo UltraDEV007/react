@@ -126,18 +126,22 @@ const Login = ({
   ...otherProps
 }) =>
   <LoginBase
-    DefaultLayout={() =>
+    DefaultLayout={({ children }) =>
       <DefaultLayout
         Header={Header}
         Footer={() => <Footer SignupButton={SignupButton} />}
+
         {...otherProps}
-      />}
+      >
+        {children}
+      </DefaultLayout>}
     Avatar={Avatar}
     LoginFields={LoginFields}
     LoginUserField={LoginUserField}
     LoginPasswordField={LoginPasswordField}
     LoginButton={LoginButton}
     RecoverButton={RecoverButton}
+    {...otherProps}
   />;
 
 Login.propTypes = {

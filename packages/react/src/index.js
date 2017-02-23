@@ -1,15 +1,17 @@
 import withAccounts from './withAccounts';
 import DefaultLayout from './DefaultLayout';
 import Accounts from './Accounts';
-import SignupFields from './SignupFields';
-import connectLoginForm from './connectLoginForm';
 import Login from './Login';
+import Signup from './Signup';
+import connectLoginForm from './connectLoginForm';
+import connectSignupForm from './connectSignupForm';
 
 export {
   withAccounts,
   DefaultLayout,
   Accounts,
-  SignupFields,
-  connectLoginForm,
   Login,
+  Signup,
+  connectLoginForm,
+  connectSignupForm,
 };

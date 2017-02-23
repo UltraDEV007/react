@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import AccountsClient from '@accounts/client';
 import FormTypes from './FormTypes';
 import connectLoginForm from './connectLoginForm';
+import connectSignupForm from './connectSignupForm';
 
 class Accounts extends Component {
   static propTypes = {
@@ -32,6 +33,10 @@ class Accounts extends Component {
     switch (this.state.formType) {
       case FormTypes.LOGIN:
         ConnectedForm = connectLoginForm(<Login />);
+        break;
+      case FormTypes.SIGNUP:
+        ConnectedForm = connectSignupForm(<Signup passwordSignupFields="USERNAME_ONLY" />);
+        // ConnectedForm = () => <Signup passwordSignupFields="USERNAME_ONLY" />;
         break;
       default:
         break;

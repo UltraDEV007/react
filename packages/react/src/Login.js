@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default ({
+const Login = ({
   DefaultLayout,
   Avatar,
   LoginFields,
@@ -16,6 +16,21 @@ export default ({
       <LoginUserField {...otherProps} />
       <LoginPasswordField {...otherProps} />
     </LoginFields>
-    <LoginButton />
-    <RecoverButton />
+    <LoginButton {...otherProps} />
+    <RecoverButton {...otherProps} />
   </DefaultLayout>;
+
+Login.propTypes = {
+  DefaultLayout: PropTypes.node,
+  Avatar: PropTypes.node,
+  LoginFields: PropTypes.node,
+  LoginUserField: PropTypes.node,
+  LoginPasswordField: PropTypes.node,
+  RecoverButton: PropTypes.node,
+  LoginButton: PropTypes.node,
+  SignupButton: PropTypes.node,
+  Header: PropTypes.node,
+  Footer: PropTypes.node,
+};
+
+export default Login;

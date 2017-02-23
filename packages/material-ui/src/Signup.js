@@ -10,7 +10,7 @@ import {
 import {
   SocialPerson,
 } from 'material-ui/svg-icons';
-import { SignupFields as SignupFieldsBase } from '@accounts/react';
+import { Signup as SignupBase } from '@accounts/react';
 import DefaultLayout from './DefaultLayout';
 
 const Avatar = () =>
@@ -20,35 +20,14 @@ const Avatar = () =>
     }}
   />;
 
-const SignupFieldsWrapper = ({ children }) =>
-  <Flexbox flexDirection="column" justifyContent="center" alignItems="center">{children}</Flexbox>;
+const SignupFields = ({ children }) =>
+  <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
+    {children}
+  </Flexbox>;
 
-SignupFieldsWrapper.propTypes = {
+SignupFields.propTypes = {
   children: PropTypes.node,
 };
-
-const SignupFields = ({
-  passwordSignupFields,
-  SignupFields,
-  SignupEmailField,
-  SignupEmailOptionalField,
-  SignupUsernameField,
-  SignupPasswordField,
-  SignupPasswordConfirmField,
-  ...otherProps
-}) =>
-  <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
-    <SignupFieldsBase
-      passwordSignupFields={passwordSignupFields}
-      Wrapper={SignupFieldsWrapper}
-      SignupEmailField={SignupEmailField}
-      SignupEmailOptionalField={SignupEmailOptionalField}
-      SignupUsernameField={SignupUsernameField}
-      SignupPasswordField={SignupPasswordField}
-      SignupPasswordConfirmField={SignupPasswordConfirmField}
-      {...otherProps}
-    />
-  </Flexbox>;
 
 const SignupEmailField = ({ ...otherProps }) =>
   <TextField
@@ -145,7 +124,6 @@ Footer.propTypes = {
   LoginButton: PropTypes.node,
 };
 
-
 const Signup = ({
   Header,
   Footer,
@@ -158,28 +136,28 @@ const Signup = ({
   SignupPasswordConfirmField,
   SignupButton,
   LoginButton,
-  accounts,
   ...otherProps
-}) => (
-  <DefaultLayout
-    Header={Header}
-    Footer={() => <Footer LoginButton={LoginButton} />}
+}) =>
+  <SignupBase
+    DefaultLayout={({ children }) =>
+      <DefaultLayout
+        Header={Header}
+        Footer={() => <Footer LoginButton={LoginButton} />}
+        {...otherProps}
+      >
+        {children}
+      </DefaultLayout>
+    }
+    SignupFields={SignupFields}
+    Avatar={Avatar}
+    SignupEmailField={SignupEmailField}
+    SignupEmailOptionalField={SignupEmailOptionalField}
+    SignupUsernameField={SignupUsernameField}
+    SignupPasswordField={SignupPasswordField}
+    SignupPasswordConfirmField={SignupPasswordConfirmField}
+    SignupButton={SignupButton}
     {...otherProps}
-  >
-    <Avatar />
-    <SignupFields
-      passwordSignupFields={accounts.options().passwordSignupFields}
-      Wrapper={SignupFieldsWrapper}
-      SignupEmailField={SignupEmailField}
-      SignupEmailOptionalField={SignupEmailOptionalField}
-      SignupUsernameField={SignupUsernameField}
-      SignupPasswordField={SignupPasswordField}
-      SignupPasswordConfirmField={SignupPasswordConfirmField}
-      {...otherProps}
-    />
-    <SignupButton />
-  </DefaultLayout>
-  );
+  />;
 
 Signup.propTypes = {
   Avatar: PropTypes.node,
@@ -194,7 +172,6 @@ Signup.propTypes = {
   LoginButton: PropTypes.node,
   Header: PropTypes.node,
   Footer: PropTypes.node,
-  accounts: PropTypes.object,
 };
 
 Signup.defaultProps = {
@@ -211,6 +188,4 @@ Signup.defaultProps = {
   Footer,
 };
 
-export default getContext({
-  accounts: PropTypes.object,
-})(Signup);
+export default Signup;
