@@ -10,6 +10,7 @@ import {
 import {
   SocialPerson,
 } from 'material-ui/svg-icons';
+import { Login as LoginBase } from '@accounts/react';
 import DefaultLayout from './DefaultLayout';
 
 const Avatar = () =>
@@ -34,7 +35,9 @@ const LoginUserField = ({ ...otherProps }) =>
     style={{
       marginBottom: 10,
     }}
-    {...otherProps}
+    onChange={(e) => {
+      console.log(otherProps);
+    }}
   />;
 
 const LoginPasswordField = ({ ...otherProps }) =>
@@ -121,21 +124,21 @@ const Login = ({
   LoginButton,
   SignupButton,
   ...otherProps
-}) => (
-  <DefaultLayout
-    Header={Header}
-    Footer={() => <Footer SignupButton={SignupButton} />}
-    {...otherProps}
-  >
-    <Avatar />
-    <LoginFields>
-      <LoginUserField />
-      <LoginPasswordField />
-    </LoginFields>
-    <LoginButton />
-    <RecoverButton />
-  </DefaultLayout>
-  );
+}) =>
+  <LoginBase
+    DefaultLayout={() =>
+      <DefaultLayout
+        Header={Header}
+        Footer={() => <Footer SignupButton={SignupButton} />}
+        {...otherProps}
+      />}
+    Avatar={Avatar}
+    LoginFields={LoginFields}
+    LoginUserField={LoginUserField}
+    LoginPasswordField={LoginPasswordField}
+    LoginButton={LoginButton}
+    RecoverButton={RecoverButton}
+  />;
 
 Login.propTypes = {
   Avatar: PropTypes.node,

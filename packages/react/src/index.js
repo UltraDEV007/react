@@ -3,6 +3,7 @@ import DefaultLayout from './DefaultLayout';
 import Accounts from './Accounts';
 import SignupFields from './SignupFields';
 import connectLoginForm from './connectLoginForm';
+import Login from './Login';
 
 export {
   withAccounts,
@@ -10,4 +11,5 @@ export {
   Accounts,
   SignupFields,
   connectLoginForm,
+  Login,
 };
