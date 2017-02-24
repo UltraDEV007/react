@@ -18,6 +18,34 @@ class Signup extends Component {
     SignupButton: PropTypes.node,
     Header: PropTypes.node,
     Footer: PropTypes.node,
+    FormError: PropTypes.node,
+  }
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      formError: '',
+    };
+  }
+  onSubmit = async ({
+    username,
+    email,
+    password,
+  }) => {
+    const { accounts } = this.props;
+    this.setState({
+      formError: '',
+    });
+    try {
+      await accounts.createUser({
+        username,
+        email,
+        password,
+      });
+    } catch (err) {
+      this.setState({
+        formError: err.message,
+      });
+    }
   }
   validate = ({
     username,
@@ -238,6 +266,7 @@ class Signup extends Component {
       Footer,
       Avatar,
       SignupButton,
+      FormError,
     } = this.props;
     return (
       <Container>
@@ -257,6 +286,7 @@ class Signup extends Component {
               </div>
             }
           </Form>
+          <FormError errorText={this.state.formError} />
         </Content>
         <Footer />
       </Container>

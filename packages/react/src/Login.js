@@ -17,6 +17,7 @@ class Login extends Component {
     Footer: PropTypes.node,
     Container: PropTypes.node,
     Content: PropTypes.node,
+    FormError: PropTypes.node,
   }
   static defaultProps = {
     Container: () => <div />,
@@ -24,24 +25,31 @@ class Login extends Component {
     Content: () => <div />,
     Footer: () => <div />,
   };
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      formError: '',
+    };
+  }
   onSubmit = async (values) => {
     const { accounts } = this.props;
-    await accounts.loginWithPassword(values.user, values.password);
+    this.setState({
+      formError: '',
+    });
+    try {
+      await accounts.loginWithPassword(values.user, values.password);
+    } catch (err) {
+      this.setState({
+        formError: err.message,
+      });
+    }
   }
   validate = ({
     user,
     password,
   }) => ({
     user: !user ? 'Username or Email is required' : undefined,
-    password: (() => { //eslint-disable-line
-      const { minimumPasswordLength } = this.props.accounts.options();
-      if (!password) {
-        return 'Password is required';
-      }
-      if (isString(password) && password.length < minimumPasswordLength) {
-        return `Password must be at least ${minimumPasswordLength} characters`;
-      }
-    })(),
+    password: !password ? 'Password is required' : undefined,
   })
   render() {
     const {
@@ -55,6 +63,7 @@ class Login extends Component {
       LoginPasswordField,
       LoginButton,
       RecoverButton,
+      FormError,
       ...otherProps
     } = this.props;
     return (
@@ -96,6 +105,7 @@ class Login extends Component {
             }
           </Form>
           <RecoverButton {...otherProps} />
+          <FormError errorText={this.state.formError} />
         </Content>
         <Footer />
       </Container>

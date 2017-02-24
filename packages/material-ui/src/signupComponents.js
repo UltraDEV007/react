@@ -12,7 +12,7 @@ import {
 } from 'material-ui/svg-icons';
 import Container from './Container';
 import Content from './Content';
-
+import FormError from './FormError';
 
 const Avatar = () =>
   <MuiAvatar
@@ -140,4 +140,5 @@ export default {
   LoginButton,
   Header,
   Footer,
+  FormError,
 };
