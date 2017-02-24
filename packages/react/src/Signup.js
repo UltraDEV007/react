@@ -1,10 +1,13 @@
 import React, { PropTypes, Component } from 'react';
 import { PasswordSignupFields, validators } from '@accounts/common';
+import { isString } from 'lodash';
+import { Form, FormInput } from 'react-form';
 
 class Signup extends Component {
   static propTypes = {
     accounts: PropTypes.object,
-    DefaultLayout: PropTypes.node,
+    Container: PropTypes.node,
+    Content: PropTypes.node,
     Avatar: PropTypes.node,
     SignupFields: PropTypes.node,
     SignupEmailOptionalField: PropTypes.node,
@@ -12,136 +15,64 @@ class Signup extends Component {
     SignupUsernameField: PropTypes.node,
     SignupPasswordField: PropTypes.node,
     SignupPasswordConfirmField: PropTypes.node,
-    LoginButton: PropTypes.node,
     SignupButton: PropTypes.node,
     Header: PropTypes.node,
     Footer: PropTypes.node,
   }
-  constructor(props, context) {
-    super(props, context);
-    this.state = {
-      emailField: '',
-      emailFieldErrorText: '',
-      usernameField: '',
-      usernameFieldErrorText: '',
-      passwordField: '',
-      passwordFieldErrorText: '',
-      passwordConfirmField: '',
-      passwordConfirmFieldErrorText: '',
-      isValidForm: false,
-    };
-  }
-  onChangeEmailField = (e) => {
-    this.setState({
-      emailField: e.target.value,
-    });
-  }
-  onChangeUsernameField = (e) => {
-    this.setState({
-      usernameField: e.target.value,
-    });
-  }
-  onChangePasswordField = (e) => {
-    this.setState({
-      passwordField: e.target.value,
-    });
-  }
-  onChangePasswordConfirmField = (e) => {
-    this.setState({
-      passwordConfirmField: e.target.value,
-    });
-  }
-  onSignupClicked = async () => {
-    const accounts = this.props.accounts;
-    const type = accounts.options().passwordSignupFields;
+  validate = ({
+    username,
+    email,
+    password,
+    passwordConfirm,
+  }) => {
+    const { passwordSignupFields } = this.props.accounts.options();
     const {
           EMAIL_ONLY,
           USERNAME_ONLY,
           USERNAME_AND_EMAIL,
           USERNAME_AND_OPTIONAL_EMAIL,
       } = PasswordSignupFields;
-    switch (type) {
-      case EMAIL_ONLY:
-        this.validateEmailField(this.state.emailField);
-        break;
-      case USERNAME_ONLY:
-        this.validateUsernameField(this.state.usernameField);
-        break;
-      case USERNAME_AND_EMAIL:
-        this.validateUsernameField(this.state.usernameField);
-        this.validateEmailField(this.state.emailField);
-        break;
-      case USERNAME_AND_OPTIONAL_EMAIL:
-        this.validateUsernameField(this.state.usernameField);
-        if (this.state.emailField.length > 0) {
-          this.validateEmailField(this.state.emailField);
+    const toReturn = {
+      password: (() => { //eslint-disable-line
+        const { minimumPasswordLength } = this.props.accounts.options();
+        if (!password) {
+          return 'Password is required';
         }
-        break;
-      default:
-        break;
+        if (isString(password) && password.length < minimumPasswordLength) {
+          return `Password must be at least ${minimumPasswordLength} characters`;
+        }
+      })(),
+      passwordConfirm: password !== passwordConfirm ? 'Passwords do not match' : undefined,
+    };
+
+    if (passwordSignupFields === EMAIL_ONLY || USERNAME_AND_EMAIL) {
+      toReturn.email = (() => {
+        if (!email) {
+          return 'Email is required';
+        }
+        if (!validators.isEmail(email)) {
+          return 'Email is not valid';
+        }
+        return undefined;
+      })();
     }
-    this.validatePasswordField(this.state.passwordField, this.state.passwordConfirmField);
-    if (!this.state.hasErrors) {
-      await accounts.loginWithPassword(this.state.userField, this.state.passwordField);
+
+    if (passwordSignupFields === USERNAME_AND_OPTIONAL_EMAIL) {
+      toReturn.email = (() => {
+        if (!validators.isEmail(email)) {
+          return 'Email is not valid';
+        }
+        return undefined;
+      })();
     }
+
+    if (passwordSignupFields === USERNAME_ONLY || USERNAME_AND_EMAIL) {
+      toReturn.username = !username ? 'Username is required' : undefined;
+    }
+
+    return toReturn;
   }
-  validateEmailField = (field) => { // eslint-disable-line consistent-return
-    if (validators.validateEmail(field)) {
-      this.setState({
-        emailFieldErrorText: '',
-        hasErrors: false,
-      });
-    } else {
-      this.setState({
-        emailFieldErrorText: 'Invalid email',
-        hasErrors: true,
-      });
-    }
-  }
-  validateUsernameField = (field) => { // eslint-disable-line consistent-return
-    if (validators.validateUsername(field)) {
-      this.setState({
-        usernameFieldErrorText: '',
-        hasErrors: false,
-      });
-    } else {
-      this.setState({
-        usernameFieldErrorText: 'Invalid username',
-        hasErrors: true,
-      });
-    }
-  }
-  validatePasswordField = (field, passwordConfirmField) => {
-    const minimumPasswordLength = this.props.accounts.options().minimumPasswordLength;
-    if (validators.validatePassword(field) && field.length >= minimumPasswordLength) {
-      this.setState({
-        passwordFieldErrorText: '',
-        hasErrors: false,
-      });
-    } else if (field.length < minimumPasswordLength) {
-      this.setState({
-        passwordFieldErrorText: `Password must be ${minimumPasswordLength} characters or longer`,
-        hasErrors: true,
-      });
-    } else {
-      this.setState({
-        passwordFieldErrorText: 'Invalid password',
-        hasErrors: true,
-      });
-    }
-    if (field !== passwordConfirmField) {
-      this.setState({
-        passwordConfirmFieldErrorText: 'Passwords do not match',
-        hasErrors: true,
-      });
-    } else {
-      this.setState({
-        passwordConfirmFieldErrorText: '',
-        hasErrors: false,
-      });
-    }
-  }
-  renderSignupFields = () => {
+  renderSignupFields = (form) => {
     const {
       accounts,
       SignupFields,
@@ -162,73 +93,134 @@ class Signup extends Component {
       case EMAIL_ONLY:
         return (
           <SignupFields>
-            <SignupEmailField
-              onChange={e => this.onChangeEmailField(e)}
-              errorText={this.state.emailFieldErrorText}
-            />
-            <SignupPasswordField
-              onChange={e => this.onChangePasswordField(e)}
-              errorText={this.state.passwordFieldErrorText}
-            />
-            <SignupPasswordConfirmField
-              onChange={e => this.onChangePasswordConfirmField(e)}
-              errorText={this.state.passwordConfirmFieldErrorText}
-            />
+            <FormInput field="email" showErrors={false}>
+              {() =>
+                <SignupEmailField
+                  {...form}
+                  value={form.getValue('email', '')}
+                  onChange={e => form.setValue('email', e.target.value)}
+                  errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
+                />
+              }
+            </FormInput>
+            <FormInput field="password" showErrors={false}>
+              {() =>
+                <SignupPasswordField
+                  {...form}
+                  value={form.getValue('password', '')}
+                  onChange={e => form.setValue('password', e.target.value)}
+                  errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
+                />
+              }
+            </FormInput>
+            <FormInput field="passwordConfirm" showErrors={false}>
+              {() =>
+                <SignupPasswordConfirmField
+                  {...form}
+                  value={form.getValue('passwordConfirm', '')}
+                  onChange={e => form.setValue('passwordConfirm', e.target.value)}
+                  errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
+                />
+              }
+            </FormInput>
           </SignupFields>);
       case USERNAME_ONLY:
         return (
           <SignupFields>
-            <SignupUsernameField
-              onChange={e => this.onChangeUsernameField(e)}
-              errorText={this.state.usernameFieldErrorText}
-            />
-            <SignupPasswordField
-              onChange={e => this.onChangePasswordField(e)}
-              errorText={this.state.passwordFieldErrorText}
-            />
-            <SignupPasswordConfirmField
-              onChange={e => this.onChangePasswordConfirmField(e)}
-              errorText={this.state.passwordConfirmFieldErrorText}
-            />
+            <FormInput field="username" showErrors={false}>
+              {() =>
+                <SignupUsernameField
+                  {...form}
+                  value={form.getValue('username', '')}
+                  onChange={e => form.setValue('username', e.target.value)}
+                  errorText={form.getTouched('username') && isString(form.getError('username')) ? form.getError('username') : ''}
+                />
+              }
+            </FormInput>
+            <FormInput field="password" showErrors={false}>
+              {() =>
+                <SignupPasswordField
+                  {...form}
+                  value={form.getValue('password', '')}
+                  onChange={e => form.setValue('password', e.target.value)}
+                  errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
+                />
+              }
+            </FormInput>
+            <FormInput field="passwordConfirm" showErrors={false}>
+              {() =>
+                <SignupPasswordConfirmField
+                  {...form}
+                  value={form.getValue('passwordConfirm', '')}
+                  onChange={e => form.setValue('passwordConfirm', e.target.value)}
+                  errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
+                />
+              }
+            </FormInput>
           </SignupFields>
         );
       case USERNAME_AND_EMAIL:
         return (
           <SignupFields>
-            <SignupUsernameField
-              onChange={e => this.onChangeUsernameField(e)}
-              errorText={this.state.usernameFieldErrorText}
-            />
+            <FormInput field="username" showErrors={false}>
+              {() =>
+                <SignupUsernameField
+                  {...form}
+                  value={form.getValue('username', '')}
+                  onChange={e => form.setValue('username', e.target.value)}
+                  errorText={form.getTouched('username') && isString(form.getError('username')) ? form.getError('username') : ''}
+                />
+              }
+            </FormInput>
             <SignupEmailField
-              onChange={e => this.onChangeEmailField(e)}
-              errorText={this.state.emailFieldErrorText}
+              {...form}
+              value={form.getValue('email', '')}
+              onChange={e => form.setValue('email', e.target.value)}
+              errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
             />
-            <SignupPasswordField
-              onChange={e => this.onChangePasswordField(e)}
-              errorText={this.state.passwordFieldErrorText}
-            />
-            <SignupPasswordConfirmField
-              onChange={e => this.onChangePasswordConfirmField(e)}
-              errorText={this.state.passwordConfirmFieldErrorText}
-            />
+            <FormInput field="password" showErrors={false}>
+              {() =>
+                <SignupPasswordField
+                  {...form}
+                  value={form.getValue('password', '')}
+                  onChange={e => form.setValue('password', e.target.value)}
+                  errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
+                />
+              }
+            </FormInput>
+            <FormInput field="passwordConfirm" showErrors={false}>
+              {() =>
+                <SignupPasswordConfirmField
+                  {...form}
+                  value={form.getValue('passwordConfirm', '')}
+                  onChange={e => form.setValue('passwordConfirm', e.target.value)}
+                  errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
+                />
+              }
+            </FormInput>
           </SignupFields>
         );
       case USERNAME_AND_OPTIONAL_EMAIL:
         return (
           <SignupFields>
             <SignupUsernameField
+              {...form}
               onChange={e => this.onChangeUsernameField(e)}
               errorText={this.state.usernameFieldErrorText}
             />
             <SignupEmailOptionalField
-              onChange={e => this.onChangeEmailField(e)}
-              errorText={this.state.emailFieldErrorText}
+              {...form}
+              value={form.getValue('email', '')}
+              onChange={e => form.setValue('email', e.target.value)}
+              errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
             />
             <SignupPasswordField
+              {...form}
               onChange={e => this.onChangePasswordField(e)}
               errorText={this.state.passwordFieldErrorText}
             />
             <SignupPasswordConfirmField
+              {...form}
               onChange={e => this.onChangePasswordConfirmField(e)}
               errorText={this.state.passwordConfirmFieldErrorText}
             />
@@ -240,18 +232,34 @@ class Signup extends Component {
   }
   render() {
     const {
-      DefaultLayout,
-      Avatar,
-      SignupButton,
+      Container,
+      Content,
       Header,
       Footer,
+      Avatar,
+      SignupButton,
     } = this.props;
     return (
-      <DefaultLayout Header={Header} Footer={Footer}>
-        <Avatar />
-        { this.renderSignupFields() }
-        <SignupButton onClick={e => this.onSignupClicked(e)} {...this.props} />
-      </DefaultLayout>
+      <Container>
+        <Header />
+        <Content>
+          <Avatar />
+          <Form
+            onSubmit={this.onSubmit}
+            validate={this.validate}
+          >
+            {form =>
+              <div>
+                {this.renderSignupFields(form)}
+                <SignupButton
+                  onClick={form.submitForm}
+                />
+              </div>
+            }
+          </Form>
+        </Content>
+        <Footer />
+      </Container>
     );
   }
 }

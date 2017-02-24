@@ -10,6 +10,8 @@ import {
 import {
   SocialPerson,
 } from 'material-ui/svg-icons';
+import Container from './Container';
+import Content from './Content';
 
 const Avatar = () =>
   <MuiAvatar
@@ -73,7 +75,9 @@ const RecoverButton = ({ ...otherProps }) =>
     </a>
   </Flexbox>;
 
-const SignupButton = ({ setFormType, ...otherProps }) =>
+const SignupButton = getContext({
+  setFormType: PropTypes.func,
+})(({ setFormType, ...otherProps }) =>
   <Flexbox>
     <a
       href="#/"
@@ -87,7 +91,7 @@ const SignupButton = ({ setFormType, ...otherProps }) =>
     >
       Create account
     </a>
-  </Flexbox>;
+  </Flexbox>);
 
 const Header = getContext({
   accounts: PropTypes.object,
@@ -112,6 +116,8 @@ Footer.propTypes = {
 };
 
 export default {
+  Container,
+  Content,
   Avatar,
   LoginFields,
   LoginUserField,

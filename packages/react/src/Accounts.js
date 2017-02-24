@@ -1,5 +1,4 @@
 import React, { PropTypes, Component } from 'react';
-import AccountsClient from '@accounts/client';
 import FormTypes from './FormTypes';
 import Login from './Login';
 import Signup from './Signup';
@@ -8,7 +7,6 @@ class Accounts extends Component {
   static propTypes = {
     accounts: PropTypes.object,
     formType: PropTypes.string,
-    DefaultLayout: PropTypes.node,
     loginComponents: PropTypes.object,
     signupComponents: PropTypes.object,
     Login: PropTypes.node,
@@ -21,6 +19,7 @@ class Accounts extends Component {
   }
   static childContextTypes = {
     accounts: PropTypes.object,
+    setFormType: PropTypes.func,
   };
   constructor(props, context) {
     super(props, context);
@@ -31,6 +30,7 @@ class Accounts extends Component {
   getChildContext() {
     return {
       accounts: this.props.accounts,
+      setFormType: this.setFormType,
     };
   }
   setFormType = (formType) => {
@@ -41,36 +41,34 @@ class Accounts extends Component {
   render() {
     const {
       accounts,
-      DefaultLayout,
       loginComponents,
       signupComponents,
       Login, // eslint-disable-line no-shadow
       Signup, // eslint-disable-line no-shadow
+      ...otherProps
     } = this.props;
-    let ConnectedForm;
     switch (this.state.formType) {
       case FormTypes.LOGIN:
-        ConnectedForm = () =>
+        return (
           <Login
             accounts={accounts}
-            DefaultLayout={DefaultLayout}
+            setFormType={this.setFormType}
             {...loginComponents}
-          />;
-        break;
+            {...otherProps}
+          />);
       case FormTypes.SIGNUP:
-        ConnectedForm = () =>
+        return (
           <Signup
             accounts={accounts}
-            DefaultLayout={DefaultLayout}
+            setFormType={this.setFormType}
             {...signupComponents}
-          />;
-        break;
+            {...otherProps}
+          />);
       default:
         break;
     }
-    return <ConnectedForm setFormType={this.setFormType} {...this.props} />;
+    return null;
   }
 }
 
-AccountsClient.ui.Accounts = Accounts;
 export default Accounts;

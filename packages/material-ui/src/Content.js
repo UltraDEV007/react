@@ -1,18 +1,8 @@
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
-import { DefaultLayout } from '@accounts/react';
 import {
   Paper,
 } from 'material-ui';
-
-const Container = ({ children }) =>
-  <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
-    {children}
-  </Flexbox>;
-
-Container.propTypes = {
-  children: PropTypes.node,
-};
 
 const Content = ({ children }) =>
   <Paper
@@ -32,9 +22,4 @@ Content.propTypes = {
   children: PropTypes.node,
 };
 
-export default ({ ...otherProps }) =>
-  <DefaultLayout
-    Container={Container}
-    Content={Content}
-    {...otherProps}
-  />;
+export default Content;

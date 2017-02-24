@@ -5,7 +5,7 @@ import { Form, FormInput } from 'react-form';
 class Login extends Component {
   static propTypes = {
     accounts: PropTypes.object,
-    DefaultLayout: PropTypes.node,
+    setFormType: PropTypes.func,
     Avatar: PropTypes.node,
     LoginFields: PropTypes.node,
     LoginUserField: PropTypes.node,
@@ -15,8 +15,15 @@ class Login extends Component {
     SignupButton: PropTypes.node,
     Header: PropTypes.node,
     Footer: PropTypes.node,
-    setFormType: PropTypes.func,
+    Container: PropTypes.node,
+    Content: PropTypes.node,
   }
+  static defaultProps = {
+    Container: () => <div />,
+    Header: () => <div />,
+    Content: () => <div />,
+    Footer: () => <div />,
+  };
   onSubmit = async (values) => {
     const { accounts } = this.props;
     await accounts.loginWithPassword(values.user, values.password);
@@ -38,7 +45,8 @@ class Login extends Component {
   })
   render() {
     const {
-      DefaultLayout,
+      Container,
+      Content,
       Header,
       Footer,
       Avatar,
@@ -50,43 +58,47 @@ class Login extends Component {
       ...otherProps
     } = this.props;
     return (
-      <DefaultLayout Header={Header} Footer={Footer}>
-        <Avatar {...otherProps} />
-        <Form
-          onSubmit={this.onSubmit}
-          validate={this.validate}
-        >
-          {form =>
-            <LoginFields>
-              <FormInput field="user" showErrors={false}>
-                {() =>
-                  <LoginUserField
-                    {...form}
-                    value={form.getValue('user', '')}
-                    onChange={e => form.setValue('user', e.target.value)}
-                    errorText={form.getTouched('user') && isString(form.getError('user')) ? form.getError('user') : ''}
-                  />
-                }
-              </FormInput>
-              <FormInput field="password" showErrors={false}>
-                {() =>
-                  <LoginPasswordField
-                    {...form}
-                    onChange={e => form.setValue('password', e.target.value)}
-                    value={form.getValue('password', '')}
-                    errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
-                  />
-                }
-              </FormInput>
-              <LoginButton
-                onClick={form.submitForm}
-                {...otherProps}
-              />
-            </LoginFields>
-          }
-        </Form>
-        <RecoverButton {...otherProps} />
-      </DefaultLayout>
+      <Container>
+        <Header />
+        <Content>
+          <Avatar {...otherProps} />
+          <Form
+            onSubmit={this.onSubmit}
+            validate={this.validate}
+          >
+            {form =>
+              <LoginFields>
+                <FormInput field="user" showErrors={false}>
+                  {() =>
+                    <LoginUserField
+                      {...form}
+                      value={form.getValue('user', '')}
+                      onChange={e => form.setValue('user', e.target.value)}
+                      errorText={form.getTouched('user') && isString(form.getError('user')) ? form.getError('user') : ''}
+                    />
+                  }
+                </FormInput>
+                <FormInput field="password" showErrors={false}>
+                  {() =>
+                    <LoginPasswordField
+                      {...form}
+                      onChange={e => form.setValue('password', e.target.value)}
+                      value={form.getValue('password', '')}
+                      errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
+                    />
+                  }
+                </FormInput>
+                <LoginButton
+                  onClick={form.submitForm}
+                  {...otherProps}
+                />
+              </LoginFields>
+            }
+          </Form>
+          <RecoverButton {...otherProps} />
+        </Content>
+        <Footer />
+      </Container>
     );
   }
 }
