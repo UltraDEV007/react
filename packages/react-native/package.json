@@ -1,8 +1,8 @@
 {
   "name": "@accounts/react-native",
-  "version": "1.0.20",
+  "version": "0.0.1",
   "description": "react-native components for js-accounts",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,8 +13,8 @@
   "author": "David Yahalomi",
   "license": "MIT",
   "dependencies": {
-    "@accounts/client": "0.0.4-alpha.98931215",
-    "@accounts/common": "0.0.4-alpha.98931215",
+    "@accounts/client": "0.0.5",
+    "@accounts/common": "0.0.5",
     "immutable": "^3.8.1",
     "lodash.memoize": "^4.1.2",
     "reselect": "^2.5.4"

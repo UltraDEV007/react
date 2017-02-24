@@ -3,7 +3,7 @@
 import { combineReducers } from 'redux';
 import login from './login/reducer';
 
-let k = 'accounts';
+let k = 'accounts-ui';
 export const storeKey = k;
 export const setStoreKey = (storeKey: string) => k = storeKey;
 
