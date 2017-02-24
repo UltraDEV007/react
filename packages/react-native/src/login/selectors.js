@@ -1,6 +1,7 @@
 // @flow
 
 import { createSelector } from 'reselect';
+import isEmpty from 'lodash.isempty';
 import { selectFieldProps } from '../immutable-form/selectors';
 
 export const selectLoginState = (state: Object) => state.login;
@@ -31,6 +32,7 @@ export const selectPropsLoginForm = createSelector(
   selectPasswordField,
   (loginState, user, password) => ({
     submitting: loginState.submitting,
+    disableSubmit: isEmpty(loginState.user.value) || isEmpty(loginState.password.value),
     error: loginState.error || user.error || password.error,
   })
 );

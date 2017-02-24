@@ -10,25 +10,28 @@ export class LoginForm extends Component {
     fieldsStyle: TextInput.propTypes.style,
     onSubmit: PropTypes.func.isRequired,
     submitting: PropTypes.bool,
+    disableSubmit: PropTypes.bool,
     error: PropTypes.string,
     renderSubmitButton: PropTypes.func,
     renderErrorLabel: PropTypes.func,
   };
 
   static defaultProps = {
-    submitting: true,
+    submitting: false,
     error: null,
     renderSubmitButton: null,
     renderErrorLabel: null,
+    disableSubmit: true,
   };
 
   renderButton() {
-    const { renderSubmitButton, onSubmit, submitting } = this.props;
+    const { renderSubmitButton, onSubmit, submitting, disableSubmit: disabled } = this.props;
 
-    if (renderSubmitButton) return renderSubmitButton({ onSubmit });
+    if (renderSubmitButton) return renderSubmitButton({ onSubmit, disabled });
 
     return (
       <Button
+        disabled={disabled}
         onPress={onSubmit}
         title="Login"
         accessibilityLabel="Press here to login"

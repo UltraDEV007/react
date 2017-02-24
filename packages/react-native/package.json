@@ -16,6 +16,7 @@
     "@accounts/client": "0.0.5",
     "@accounts/common": "0.0.5",
     "immutable": "^3.8.1",
+    "lodash.isempty": "^4.4.0",
     "lodash.memoize": "^4.1.2",
     "reselect": "^2.5.4"
   },
