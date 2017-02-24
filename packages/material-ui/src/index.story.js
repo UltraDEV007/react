@@ -1,25 +1,25 @@
 import React, { PropTypes } from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { withContext } from 'recompose';
+import AccountsClient from '@accounts/client';
 import { PasswordSignupFields } from '@accounts/common';
 import { Accounts } from './index';
 import './font.css';
-import AccountsClient from '@accounts/client';
 
 AccountsClient.config({
   passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
+  title: 'Site Title',
 }, {});
 
-const AccountsWithContext = withContext({
-  accounts: PropTypes.object,
-}, () => ({
-  accounts: {
-    options: () => ({
-      title: 'Site Title',
-      passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
-    }),
-  },
-}))(Accounts);
+// const AccountsWithContext = withContext({
+//   accounts: PropTypes.object,
+// }, () => ({
+//   accounts: {
+//     options: () => ({
+//       title: 'Site Title',
+//       passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
+//     }),
+//   },
+// }))(Accounts);
 
 const style = {
   marginTop: 75,
@@ -28,12 +28,12 @@ const style = {
 storiesOf('Accounts', module)
   .add('login', () => (
     <div style={style}>
-      <AccountsWithContext formType="login" />
+      <Accounts formType="login" accounts={AccountsClient} />
     </div>
   ))
   .add('signup', () => (
     <div style={style}>
-      <AccountsWithContext formType="signup" />
+      <Accounts formType="signup" accounts={AccountsClient} />
     </div>
   ),
 );

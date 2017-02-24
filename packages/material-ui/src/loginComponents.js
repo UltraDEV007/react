@@ -10,8 +10,6 @@ import {
 import {
   SocialPerson,
 } from 'material-ui/svg-icons';
-import { Login as LoginBase } from '@accounts/react';
-import DefaultLayout from './DefaultLayout';
 
 const Avatar = () =>
   <MuiAvatar
@@ -35,9 +33,7 @@ const LoginUserField = ({ ...otherProps }) =>
     style={{
       marginBottom: 10,
     }}
-    onChange={(e) => {
-      console.log(otherProps);
-    }}
+    {...otherProps}
   />;
 
 const LoginPasswordField = ({ ...otherProps }) =>
@@ -50,17 +46,19 @@ const LoginPasswordField = ({ ...otherProps }) =>
     {...otherProps}
   />;
 
-const LoginButton = () =>
+const LoginButton = ({ ...otherProps }) =>
   <RaisedButton
     primary
     fullWidth
     label="Sign in"
     style={{
+      marginTop: 10,
       marginBottom: 10,
     }}
+    {...otherProps}
   />;
 
-const RecoverButton = () =>
+const RecoverButton = ({ ...otherProps }) =>
   <Flexbox alignSelf="flex-end" >
     <a
       href="#/"
@@ -68,14 +66,14 @@ const RecoverButton = () =>
         fontFamily: 'Roboto',
         textDecoration: 'none',
         fontSize: 14,
-        marginBottom: 10,
       }}
+      {...otherProps}
     >
       Forgot password
     </a>
   </Flexbox>;
 
-const SignupButton = () =>
+const SignupButton = ({ setFormType, ...otherProps }) =>
   <Flexbox>
     <a
       href="#/"
@@ -84,6 +82,8 @@ const SignupButton = () =>
         textDecoration: 'none',
         fontSize: 16,
       }}
+      onClick={() => setFormType('signup')}
+      {...otherProps}
     >
       Create account
     </a>
@@ -104,59 +104,14 @@ const Header = getContext({
   </div>,
   );
 
-const Footer = ({
-  SignupButton,
-}) =>
-  <SignupButton />;
+const Footer = ({ ...otherProps }) =>
+  <SignupButton {...otherProps} />;
 
 Footer.propTypes = {
   SignupButton: PropTypes.node,
 };
 
-const Login = ({
-  Header,
-  Footer,
-  Avatar,
-  LoginFields,
-  LoginUserField,
-  LoginPasswordField,
-  RecoverButton,
-  LoginButton,
-  SignupButton,
-  ...otherProps
-}) =>
-  <LoginBase
-    DefaultLayout={({ children }) =>
-      <DefaultLayout
-        Header={Header}
-        Footer={() => <Footer SignupButton={SignupButton} />}
-
-        {...otherProps}
-      >
-        {children}
-      </DefaultLayout>}
-    Avatar={Avatar}
-    LoginFields={LoginFields}
-    LoginUserField={LoginUserField}
-    LoginPasswordField={LoginPasswordField}
-    LoginButton={LoginButton}
-    RecoverButton={RecoverButton}
-    {...otherProps}
-  />;
-
-Login.propTypes = {
-  Avatar: PropTypes.node,
-  LoginFields: PropTypes.node,
-  LoginUserField: PropTypes.node,
-  LoginPasswordField: PropTypes.node,
-  RecoverButton: PropTypes.node,
-  LoginButton: PropTypes.node,
-  SignupButton: PropTypes.node,
-  Header: PropTypes.node,
-  Footer: PropTypes.node,
-};
-
-Login.defaultProps = {
+export default {
   Avatar,
   LoginFields,
   LoginUserField,
@@ -167,5 +122,3 @@ Login.defaultProps = {
   Header,
   Footer,
 };
-
-export default Login;

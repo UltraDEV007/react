@@ -1,11 +1,11 @@
 import Accounts from './Accounts';
 import DefaultLayout from './DefaultLayout';
-import Login from './Login';
-import Signup from './Signup';
+import loginComponents from './loginComponents';
+import signupComponents from './signupComponents';
 
 export {
   Accounts,
   DefaultLayout,
-  Login,
-  Signup,
+  loginComponents,
+  signupComponents,
 };

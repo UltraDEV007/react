@@ -10,8 +10,6 @@ import {
 import {
   SocialPerson,
 } from 'material-ui/svg-icons';
-import { Signup as SignupBase } from '@accounts/react';
-import DefaultLayout from './DefaultLayout';
 
 const Avatar = () =>
   <MuiAvatar
@@ -76,17 +74,19 @@ const SignupPasswordConfirmField = ({ ...otherProps }) =>
     {...otherProps}
   />;
 
-const SignupButton = () =>
+const SignupButton = ({ ...otherProps }) =>
   <RaisedButton
     primary
     fullWidth
     label="Sign up"
     style={{
+      marginTop: 10,
       marginBottom: 10,
     }}
+    {...otherProps}
   />;
 
-const LoginButton = () =>
+const LoginButton = ({ ...otherProps }) =>
   <Flexbox>
     <a
       href="#/"
@@ -95,6 +95,7 @@ const LoginButton = () =>
         textDecoration: 'none',
         fontSize: 16,
       }}
+      {...otherProps}
     >
       Already have an account?
     </a>
@@ -116,65 +117,11 @@ const Header = getContext({
   );
 
 const Footer = ({
-  LoginButton,
-}) =>
-  <LoginButton />;
-
-Footer.propTypes = {
-  LoginButton: PropTypes.node,
-};
-
-const Signup = ({
-  Header,
-  Footer,
-  Avatar,
-  SignupFields,
-  SignupEmailField,
-  SignupEmailOptionalField,
-  SignupUsernameField,
-  SignupPasswordField,
-  SignupPasswordConfirmField,
-  SignupButton,
-  LoginButton,
   ...otherProps
 }) =>
-  <SignupBase
-    DefaultLayout={({ children }) =>
-      <DefaultLayout
-        Header={Header}
-        Footer={() => <Footer LoginButton={LoginButton} />}
-        {...otherProps}
-      >
-        {children}
-      </DefaultLayout>
-    }
-    SignupFields={SignupFields}
-    Avatar={Avatar}
-    SignupEmailField={SignupEmailField}
-    SignupEmailOptionalField={SignupEmailOptionalField}
-    SignupUsernameField={SignupUsernameField}
-    SignupPasswordField={SignupPasswordField}
-    SignupPasswordConfirmField={SignupPasswordConfirmField}
-    SignupButton={SignupButton}
-    {...otherProps}
-  />;
+  <LoginButton {...otherProps} />;
 
-Signup.propTypes = {
-  Avatar: PropTypes.node,
-  SignupFields: PropTypes.node,
-  SignupEmailOptionalField: PropTypes.node,
-  SignupEmailField: PropTypes.node,
-  SignupUsernameField: PropTypes.node,
-  SignupPasswordField: PropTypes.node,
-  SignupPasswordConfirmField: PropTypes.node,
-  RecoverButton: PropTypes.node,
-  SignupButton: PropTypes.node,
-  LoginButton: PropTypes.node,
-  Header: PropTypes.node,
-  Footer: PropTypes.node,
-};
-
-Signup.defaultProps = {
+export default {
   Avatar,
   SignupFields,
   SignupEmailOptionalField,
@@ -187,5 +134,3 @@ Signup.defaultProps = {
   Header,
   Footer,
 };
-
-export default Signup;
