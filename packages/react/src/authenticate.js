@@ -15,9 +15,12 @@ const authenticate = ({
       this.user = null;
       this.unsubscribe = this.store.subscribe(() => {
         const user = this.store.getState().getIn(['accounts', 'user']);
-        if (user.size > 0 && !user.equals(this.user)) {
+        if (user.size > 0) {
           this.user = user;
-          this.props.setUser(user);
+          this.props.setUser(user.toJS());
+        } else {
+          this.props.showDialog(true);
+          this.props.setUser(null);
         }
       });
       try {
@@ -35,7 +38,10 @@ const authenticate = ({
   if (accounts.isLoading()) {
     return <Loading />;
   } else if (user) {
-    return <Component />;
+    return withProps({
+      accounts,
+      user,
+    })(Component)();
   } else if (dialog) {
     return withProps({
       accounts,
