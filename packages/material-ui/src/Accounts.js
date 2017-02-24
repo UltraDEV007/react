@@ -16,4 +16,9 @@ Accounts.propTypes = {
   signupComponents: PropTypes.object,
 };
 
+Accounts.defaultProps = {
+  loginComponents: {},
+  signupComponents: {},
+};
+
 export default Accounts;
