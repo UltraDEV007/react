@@ -33,6 +33,12 @@ export class PasswordField extends Component {
     return this.textInput && this.textInput.isFocused();
   }
 
+  focus() {
+    if (this.textInput && this.textInput.focus) {
+      this.textInput.focus();
+    }
+  }
+
   renderError() {
     const {
       error,
