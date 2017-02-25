@@ -13,11 +13,13 @@ class Accounts extends Component {
     resetPasswordComponents: PropTypes.object,
     Login: PropTypes.node,
     Signup: PropTypes.node,
+    ResetPassword: PropTypes.node,
   }
   static defaultProps = {
     formType: FormTypes.LOGIN,
     Login,
     Signup,
+    ResetPassword,
   }
   static childContextTypes = {
     accounts: PropTypes.object,
@@ -48,6 +50,7 @@ class Accounts extends Component {
       resetPasswordComponents,
       Login, // eslint-disable-line no-shadow
       Signup, // eslint-disable-line no-shadow
+      ResetPassword, // eslint-disable-line no-shadow
       ...otherProps
     } = this.props;
     switch (this.state.formType) {
