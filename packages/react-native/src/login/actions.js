@@ -12,5 +12,8 @@ const accountsLogin = (state: Object) => AccountsClient.loginWithPassword(
 );
 
 export const submitLoginForm = actions.submitForm(accountsLogin);
+export const clearLoginForm = actions.clearForm;
 export const userFieldUpdate = actions.updateField('user');
 export const passwordFieldUpdate = actions.updateField('password');
+export const userFieldClear = actions.clearField('user');
+export const passwordFieldClear = actions.clearField('password');
