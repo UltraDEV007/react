@@ -1,6 +1,6 @@
 {
   "name": "@accounts/react-native",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "react-native components for js-accounts",
   "main": "src/index.js",
   "scripts": {
