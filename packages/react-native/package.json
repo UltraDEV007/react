@@ -13,8 +13,6 @@
   "author": "David Yahalomi",
   "license": "MIT",
   "dependencies": {
-    "@accounts/client": "0.0.5",
-    "@accounts/common": "0.0.5",
     "immutable": "^3.8.1",
     "lodash.isempty": "^4.4.0",
     "lodash.memoize": "^4.1.2",
@@ -24,6 +22,8 @@
     "flow-bin": "^0.38.0"
   },
   "peerDependencies": {
+    "@accounts/client": "0.0.5",
+    "@accounts/common": "0.0.5",
     "react": "^15.4.2",
     "react-native": "^0.41.1",
     "react-redux": "^5.0.2",
