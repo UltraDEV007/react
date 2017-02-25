@@ -13,7 +13,8 @@ function mapDispatch(dispatch: Dispatch<Object>) {
   };
 }
 
-const UserFieldContainer =
-        connect((state: Object) => selectPropsUserField(state[storeKey]), mapDispatch)(UserField);
+const mapState = (state: Object) => selectPropsUserField(state[storeKey]);
+
+const UserFieldContainer = connect(mapState, mapDispatch, null, { withRef: true })(UserField);
 
 export default UserFieldContainer;

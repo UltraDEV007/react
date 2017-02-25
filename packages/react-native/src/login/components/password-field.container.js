@@ -13,7 +13,8 @@ function mapDispatch(dispatch: Dispatch<Object>) {
   };
 }
 
-const createPasswordFieldContainer =
-        connect((state: Object) => selectPropsPasswordField(state[storeKey]), mapDispatch)(PasswordField);
+const mapState = (state: Object) => selectPropsPasswordField(state[storeKey]);
 
-export default createPasswordFieldContainer;
+const PasswordFieldContainer = connect(mapState, mapDispatch, null, { withRef: true })(PasswordField);
+
+export default PasswordFieldContainer;
