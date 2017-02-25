@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import FormTypes from './FormTypes';
 import Login from './Login';
 import Signup from './Signup';
+import ResetPassword from './ResetPassword';
 
 class Accounts extends Component {
   static propTypes = {
@@ -9,6 +10,7 @@ class Accounts extends Component {
     formType: PropTypes.string,
     loginComponents: PropTypes.object,
     signupComponents: PropTypes.object,
+    resetPasswordComponents: PropTypes.object,
     Login: PropTypes.node,
     Signup: PropTypes.node,
   }
@@ -43,6 +45,7 @@ class Accounts extends Component {
       accounts,
       loginComponents,
       signupComponents,
+      resetPasswordComponents,
       Login, // eslint-disable-line no-shadow
       Signup, // eslint-disable-line no-shadow
       ...otherProps
@@ -62,6 +65,14 @@ class Accounts extends Component {
             accounts={accounts}
             setFormType={this.setFormType}
             {...signupComponents}
+            {...otherProps}
+          />);
+      case FormTypes.RESET_PASSWORD:
+        return (
+          <ResetPassword
+            accounts={accounts}
+            setFormType={this.setFormType}
+            {...resetPasswordComponents}
             {...otherProps}
           />);
       default:
