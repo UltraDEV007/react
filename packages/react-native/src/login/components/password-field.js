@@ -8,6 +8,7 @@ export class PasswordField extends Component {
     shouldRenderErrorLabel: PropTypes.bool,
     renderErrorLabel: PropTypes.func,
     error: PropTypes.string,
+    containerStyle: View.propTypes.style,
   };
 
   static defaultProps = {
@@ -19,6 +20,7 @@ export class PasswordField extends Component {
     placeholder: "Password",
     autoCapitalize: "none",
     shouldRenderErrorLabel: true,
+    containerStyle: null,
   };
 
   clear() {
@@ -47,12 +49,12 @@ export class PasswordField extends Component {
   }
 
   render() {
-    const { style, ...restProps } = this.props;
+    const { style, containerStyle, ...restProps } = this.props;
     return (
-      <View style={[styles.simpleFlexContainer, styles.leftAlignedContainer]}>
+      <View style={[styles.simpleFlexContainer, containerStyle]}>
         <TextInput
-          style={[styles.simpleInput, style]}
           {...restProps}
+          style={[styles.simpleInput, style]}
           ref={ref => this.textInput = ref}
         />
 

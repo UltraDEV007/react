@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react';
 import { View, TextInput, Text } from 'react-native';
 import { styles } from '../styles';
 
-
 export class UserField extends Component {
   static propTypes = {
     ...TextInput.propTypes,
     shouldRenderErrorLabel: PropTypes.bool,
     renderErrorLabel: PropTypes.func,
     error: PropTypes.string,
+    containerStyle: View.propTypes.style,
   };
 
   static defaultProps = {
@@ -19,6 +19,7 @@ export class UserField extends Component {
     placeholder: "Username / Email",
     autoCapitalize: "none",
     shouldRenderErrorLabel: true,
+    containerStyle: null,
   };
 
   clear() {
@@ -47,9 +48,9 @@ export class UserField extends Component {
   }
 
   render() {
-    const { style, ...restProps } = this.props;
+    const { style, containerStyle, ...restProps } = this.props;
     return (
-      <View style={[styles.simpleFlexContainer]}>
+      <View style={[styles.simpleFlexContainer, containerStyle]}>
         <TextInput
           {...restProps}
           style={[styles.simpleInput, style]}

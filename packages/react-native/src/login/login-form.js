@@ -12,6 +12,8 @@ export class LoginForm extends Component {
     submitting: PropTypes.bool,
     disableSubmit: PropTypes.bool,
     error: PropTypes.string,
+    renderUserField: PropTypes.func,
+    renderPasswordField: PropTypes.func,
     renderSubmitButton: PropTypes.func,
     renderErrorLabel: PropTypes.func,
   };
@@ -21,6 +23,8 @@ export class LoginForm extends Component {
     error: null,
     renderSubmitButton: null,
     renderErrorLabel: null,
+    renderUserField: null,
+    renderPasswordField: null,
     disableSubmit: true,
   };
 
@@ -54,12 +58,32 @@ export class LoginForm extends Component {
     );
   }
 
+  renderUserField() {
+    const { fieldsStyle, renderUserField } = this.props;
+
+    if (renderUserField) return renderUserField();
+
+    return (
+      <UserField style={fieldsStyle} />
+    );
+  }
+
+  renderPasswordField() {
+    const { fieldsStyle, renderPasswordField } = this.props;
+
+    if (renderPasswordField) return renderPasswordField();
+
+    return (
+      <PasswordField style={fieldsStyle} />
+    );
+  }
+
   render() {
-    const { style, fieldsStyle } = this.props;
+    const { style } = this.props;
     return (
       <View style={[styles.container, style]}>
-        <UserField style={fieldsStyle} />
-        <PasswordField style={fieldsStyle} />
+        {this.renderUserField()}
+        {this.renderPasswordField()}
         {this.renderButton()}
         {this.renderError()}
       </View>
