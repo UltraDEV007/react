@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import AccountsClient from '@accounts/client';
 import { PasswordSignupFields } from '@accounts/common';
@@ -9,17 +9,6 @@ AccountsClient.config({
   passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
   title: 'Site Title',
 }, {});
-
-// const AccountsWithContext = withContext({
-//   accounts: PropTypes.object,
-// }, () => ({
-//   accounts: {
-//     options: () => ({
-//       title: 'Site Title',
-//       passwordSignupFields: PasswordSignupFields.USERNAME_AND_EMAIL,
-//     }),
-//   },
-// }))(Accounts);
 
 const style = {
   marginTop: 75,
