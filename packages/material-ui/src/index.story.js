@@ -25,9 +25,9 @@ storiesOf('Accounts', module)
       <Accounts formType="signup" accounts={AccountsClient} />
     </div>
   ))
-  .add('reset-password', () => (
+  .add('forgot-password', () => (
     <div style={style}>
-      <Accounts formType="reset-password" accounts={AccountsClient} />
+      <Accounts formType="forgot-password" accounts={AccountsClient} />
     </div>
   ),
 );

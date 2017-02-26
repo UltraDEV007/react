@@ -3,15 +3,15 @@ import { validators } from '@accounts/common';
 import { isString } from 'lodash';
 import { Form, FormInput } from 'react-form';
 
-class ResetPassword extends Component {
+class ForgotPassword extends Component {
   static propTypes = {
     accounts: PropTypes.object,
     Container: PropTypes.node,
     Content: PropTypes.node,
     Avatar: PropTypes.node,
-    ResetPasswordFields: PropTypes.node,
-    ResetPasswordEmailField: PropTypes.node,
-    ResetPasswordButton: PropTypes.node,
+    ForgotPasswordFields: PropTypes.node,
+    ForgotPasswordEmailField: PropTypes.node,
+    ForgotPasswordButton: PropTypes.node,
     Header: PropTypes.node,
     Footer: PropTypes.node,
     FormError: PropTypes.node,
@@ -57,16 +57,16 @@ class ResetPassword extends Component {
     return toReturn;
   }
 
-  renderResetPasswordFields = (form) => {
+  renderForgotPasswordFields = (form) => {
     const {
-      ResetPasswordFields,
-      ResetPasswordEmailField,
+      ForgotPasswordFields,
+      ForgotPasswordEmailField,
     } = this.props;
     return (
-      <ResetPasswordFields>
+      <ForgotPasswordFields>
         <FormInput field="email" showErrors={false}>
           {() =>
-            <ResetPasswordEmailField
+            <ForgotPasswordEmailField
               {...form}
               value={form.getValue('email', '')}
               onChange={e => form.setValue('email', e.target.value)}
@@ -74,7 +74,7 @@ class ResetPassword extends Component {
             />
           }
         </FormInput>
-      </ResetPasswordFields>
+      </ForgotPasswordFields>
     );
   }
 
@@ -85,7 +85,7 @@ class ResetPassword extends Component {
       Header,
       Footer,
       Avatar,
-      ResetPasswordButton,
+      ForgotPasswordButton,
       FormError,
     } = this.props;
     return (
@@ -99,8 +99,8 @@ class ResetPassword extends Component {
           >
             {form =>
               <div>
-                {this.renderResetPasswordFields(form)}
-                <ResetPasswordButton
+                {this.renderForgotPasswordFields(form)}
+                <ForgotPasswordButton
                   onClick={form.submitForm}
                 />
               </div>
@@ -114,4 +114,4 @@ class ResetPassword extends Component {
   }
 }
 
-export default ResetPassword;
+export default ForgotPassword;

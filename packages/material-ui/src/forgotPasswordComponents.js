@@ -21,16 +21,16 @@ const Avatar = () =>
     }}
   />;
 
-const ResetPasswordFields = ({ children }) =>
+const ForgotPasswordFields = ({ children }) =>
   <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
     {children}
   </Flexbox>;
 
-ResetPasswordFields.propTypes = {
+ForgotPasswordFields.propTypes = {
   children: PropTypes.node,
 };
 
-const ResetPasswordEmailField = ({ ...otherProps }) =>
+const ForgotPasswordEmailField = ({ ...otherProps }) =>
   <TextField
     hintText="Email"
     style={{
@@ -39,7 +39,7 @@ const ResetPasswordEmailField = ({ ...otherProps }) =>
     {...otherProps}
   />;
 
-const ResetPasswordButton = ({ ...otherProps }) =>
+const ForgotPasswordButton = ({ ...otherProps }) =>
   <RaisedButton
     primary
     fullWidth
@@ -95,9 +95,9 @@ export default {
   Container,
   Content,
   Avatar,
-  ResetPasswordFields,
-  ResetPasswordEmailField,
-  ResetPasswordButton,
+  ForgotPasswordFields,
+  ForgotPasswordEmailField,
+  ForgotPasswordButton,
   Header,
   Footer,
   FormError,

@@ -72,7 +72,7 @@ const RecoverButton = getContext({
         textDecoration: 'none',
         fontSize: 14,
       }}
-      onClick={() => setFormType('reset-password')}
+      onClick={() => setFormType('forgot-password')}
       {...otherProps}
     >
       Forgot password
