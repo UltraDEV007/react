@@ -6,11 +6,15 @@ import FormTypes from './FormTypes';
 const DefaultContainer = ({ children }) => children;
 
 const onEnter = accounts => async (nextState, replace, callback) => {
-  await accounts.resumeSession();
-  if (accounts.user()) {
-    replace(accounts.options().homePath);
+  try {
+    await accounts.resumeSession();
+    if (accounts.user()) {
+      replace(accounts.options().homePath);
+    }
+    callback();
+  } catch (err) {
+    callback();
   }
-  callback();
 };
 
 const accountRoutes = ({

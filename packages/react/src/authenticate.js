@@ -63,7 +63,10 @@ class Authenticate extends React.Component {
         user,
       });
     } else if (showDialog) {
-      return <Dialog accounts={accounts} formType={FormTypes.LOGIN} />;
+      return React.cloneElement(Dialog(), {
+        accounts,
+        formType: FormTypes.LOGIN,
+      });
     }
     return null;
   }
