@@ -21,81 +21,35 @@ const Avatar = () =>
     }}
   />;
 
-const LoginFields = ({ children }) =>
+const ForgotPasswordFields = ({ children }) =>
   <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
     {children}
   </Flexbox>;
 
-LoginFields.propTypes = {
+ForgotPasswordFields.propTypes = {
   children: PropTypes.node,
 };
 
-const LoginUserField = ({ ...otherProps }) =>
+const ForgotPasswordEmailField = ({ ...otherProps }) =>
   <TextField
-    hintText="Username or email"
+    hintText="Email"
     style={{
       marginBottom: 10,
     }}
     {...otherProps}
   />;
 
-const LoginPasswordField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Password"
-    type="password"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const LoginButton = ({ ...otherProps }) =>
+const ForgotPasswordButton = ({ ...otherProps }) =>
   <RaisedButton
     primary
     fullWidth
-    label="Sign in"
+    label="Recover my password"
     style={{
       marginTop: 10,
       marginBottom: 10,
     }}
     {...otherProps}
   />;
-
-const RecoverButton = getContext({
-  setFormType: PropTypes.func,
-})(({ setFormType, ...otherProps }) =>
-  <Flexbox alignSelf="flex-end" >
-    <a
-      href="#/"
-      style={{
-        fontFamily: 'Roboto',
-        textDecoration: 'none',
-        fontSize: 14,
-      }}
-      onClick={() => setFormType('forgot-password')}
-      {...otherProps}
-    >
-      Forgot password
-    </a>
-  </Flexbox>);
-
-const SignupButton = getContext({
-  setFormType: PropTypes.func,
-})(({ setFormType, ...otherProps }) =>
-  <Flexbox>
-    <a
-      href="#/"
-      style={{
-        fontFamily: 'Roboto',
-        textDecoration: 'none',
-        fontSize: 16,
-      }}
-      onClick={() => setFormType('signup')}
-      {...otherProps}
-    >
-      Create account
-    </a>
-  </Flexbox>);
 
 const Header = getContext({
   accounts: PropTypes.object,
@@ -112,8 +66,26 @@ const Header = getContext({
   </div>,
   );
 
+const LoginButton = getContext({
+  setFormType: PropTypes.func,
+})(({ setFormType, ...otherProps }) =>
+  <Flexbox>
+    <a
+      href="#/"
+      style={{
+        fontFamily: 'Roboto',
+        textDecoration: 'none',
+        fontSize: 16,
+      }}
+      onClick={() => setFormType('login')}
+      {...otherProps}
+    >
+      Log in
+    </a>
+  </Flexbox>);
+
 const Footer = ({ ...otherProps }) =>
-  <SignupButton {...otherProps} />;
+  <LoginButton {...otherProps} />;
 
 Footer.propTypes = {
   SignupButton: PropTypes.node,
@@ -123,12 +95,9 @@ export default {
   Container,
   Content,
   Avatar,
-  LoginFields,
-  LoginUserField,
-  LoginPasswordField,
-  RecoverButton,
-  LoginButton,
-  SignupButton,
+  ForgotPasswordFields,
+  ForgotPasswordEmailField,
+  ForgotPasswordButton,
   Header,
   Footer,
   FormError,

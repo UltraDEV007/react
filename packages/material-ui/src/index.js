@@ -1,6 +1,7 @@
 import Accounts from './Accounts';
 import loginComponents from './loginComponents';
 import signupComponents from './signupComponents';
+import forgotPasswordComponents from './forgotPasswordComponents';
 import Container from './Container';
 import Content from './Content';
 import FormError from './FormError';
@@ -14,4 +15,5 @@ export {
   Accounts,
   loginComponents,
   signupComponents,
+  forgotPasswordComponents,
 };

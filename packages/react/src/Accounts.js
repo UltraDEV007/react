@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import FormTypes from './FormTypes';
 import Login from './Login';
 import Signup from './Signup';
+import ForgotPassword from './ForgotPassword';
 
 class Accounts extends Component {
   static propTypes = {
@@ -9,13 +10,16 @@ class Accounts extends Component {
     formType: PropTypes.string,
     loginComponents: PropTypes.object,
     signupComponents: PropTypes.object,
+    forgotPasswordComponents: PropTypes.object,
     Login: PropTypes.node,
     Signup: PropTypes.node,
+    ForgotPassword: PropTypes.node,
   }
   static defaultProps = {
     formType: FormTypes.LOGIN,
     Login,
     Signup,
+    ForgotPassword,
   }
   static childContextTypes = {
     accounts: PropTypes.object,
@@ -43,8 +47,10 @@ class Accounts extends Component {
       accounts,
       loginComponents,
       signupComponents,
+      forgotPasswordComponents,
       Login, // eslint-disable-line no-shadow
       Signup, // eslint-disable-line no-shadow
+      ForgotPassword, // eslint-disable-line no-shadow
       ...otherProps
     } = this.props;
     switch (this.state.formType) {
@@ -62,6 +68,14 @@ class Accounts extends Component {
             accounts={accounts}
             setFormType={this.setFormType}
             {...signupComponents}
+            {...otherProps}
+          />);
+      case FormTypes.FORGOT_PASSWORD:
+        return (
+          <ForgotPassword
+            accounts={accounts}
+            setFormType={this.setFormType}
+            {...forgotPasswordComponents}
             {...otherProps}
           />);
       default:
