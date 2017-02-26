@@ -1,8 +1,8 @@
 import Accounts from './Accounts';
 import Login from './Login';
 import Signup from './Signup';
-import authenticate from './authenticate';
-import withUser from './withUser';
+import authenticate, { Authenticate } from './authenticate';
+import withCurrentUser, { WithCurrentUser } from './withCurrentUser';
 import accountRoutes from './accountRoutes';
 
 export {
@@ -10,6 +10,8 @@ export {
   Login,
   Signup,
   authenticate,
-  withUser,
+  Authenticate,
+  withCurrentUser,
+  WithCurrentUser,
   accountRoutes,
 };
