@@ -5,6 +5,18 @@ import FormTypes from './FormTypes';
 
 const DefaultContainer = ({ children }) => children;
 
+const onEnter = accounts => async (nextState, replace, callback) => {
+  try {
+    await accounts.resumeSession();
+    if (accounts.user()) {
+      replace(accounts.options().homePath);
+    }
+    callback();
+  } catch (err) {
+    callback();
+  }
+};
+
 const accountRoutes = ({
   accounts,
   component,
@@ -13,7 +25,7 @@ const accountRoutes = ({
   const Component = component;
   const Container = container;
   return (
-    <Route>
+    <Route onEnter={onEnter(accounts)}>
       <Route
         path={accounts.options().loginPath}
         component={
