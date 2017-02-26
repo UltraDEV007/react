@@ -267,11 +267,12 @@ class Signup extends Component {
       Avatar,
       SignupButton,
       FormError,
+      ...otherProps
     } = this.props;
     return (
       <Container>
         <Header />
-        <Content>
+        <Content {...otherProps}>
           <Avatar />
           <Form
             onSubmit={this.onSubmit}

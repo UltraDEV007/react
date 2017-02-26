@@ -87,11 +87,12 @@ class ForgotPassword extends Component {
       Avatar,
       ForgotPasswordButton,
       FormError,
+      ...otherProps
     } = this.props;
     return (
-      <Container>
+      <Container >
         <Header />
-        <Content>
+        <Content {...otherProps}>
           <Avatar />
           <Form
             onSubmit={this.onSubmit}

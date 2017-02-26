@@ -69,7 +69,7 @@ class Login extends Component {
     return (
       <Container>
         <Header />
-        <Content>
+        <Content {...otherProps}>
           <Avatar {...otherProps} />
           <Form
             onSubmit={this.onSubmit}
