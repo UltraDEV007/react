@@ -13,16 +13,17 @@ class WithCurrentUser extends React.Component {
     };
   }
   async componentDidMount() {
-    this.store = this.props.accounts.instance.store;
+    const accounts = this.props.accounts;
+    this.store = accounts.instance.store;
     this.user = null;
     this.mounted = true;
     this.unsubscribe = this.store.subscribe(() => {
-      const user = this.store.getState().getIn(['accounts', 'user']);
-      if (user.size > 0) {
+      const user = accounts.user();
+      if (user) {
         this.user = user;
         if (this.mounted) {
           this.setState({
-            user: user.toJS(),
+            user,
           });
         }
       } else if (this.mounted) {
@@ -32,7 +33,7 @@ class WithCurrentUser extends React.Component {
       }
     });
     try {
-      await this.props.accounts.resumeSession();
+      await accounts.resumeSession();
     } catch (err) {} //eslint-disable-line
   }
   componentWillUnmount() {
