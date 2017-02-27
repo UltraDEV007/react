@@ -69,8 +69,8 @@
     "@kadira/storybook": "^2.21.0"
   },
   "dependencies": {
-    "@accounts/client": "0.0.3",
-    "@accounts/common": "0.0.3",
+    "@accounts/client": "next",
+    "@accounts/common": "next",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
