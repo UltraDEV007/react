@@ -1,6 +1,6 @@
 {
   "name": "@accounts/react-material-ui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "React frontend build with material-ui for js-accounts",
   "main": "lib/index.js",
   "scripts": {
