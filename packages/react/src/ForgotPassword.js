@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { validators } from '@accounts/common';
-import { isString } from 'lodash';
+import isString from 'lodash/isString';
 import { Form, FormInput } from 'react-form';
 
 class ForgotPassword extends Component {

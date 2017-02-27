@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { withProps } from 'recompose';
+import withProps from 'recompose/withProps';
 import { Route } from 'react-router';
 import FormTypes from './FormTypes';
 
