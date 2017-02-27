@@ -50,6 +50,30 @@ const accountRoutes = ({
             </Container>
         }
       />
+      <Route
+        path={accounts.options().forgotPasswordPath}
+        component={
+          () =>
+            <Container>
+              {withProps({
+                formType: FormTypes.FORGOT_PASSWORD,
+                accounts,
+              })(Component)()}
+            </Container>
+        }
+      />
+      <Route
+        path={accounts.options().resetPasswordPath}
+        component={
+          () =>
+            <Container>
+              {withProps({
+                formType: FormTypes.RESET_PASSWORD,
+                accounts,
+              })(Component)()}
+            </Container>
+        }
+      />
     </Route>
   );
 };
