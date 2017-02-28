@@ -15,6 +15,7 @@ class ResetPassword extends Component {
     Header: PropTypes.node,
     Footer: PropTypes.node,
     FormError: PropTypes.node,
+    token: PropTypes.string,
   }
 
   constructor(props, context) {
@@ -27,12 +28,12 @@ class ResetPassword extends Component {
   onSubmit = async ({
     password,
   }) => {
-    const { accounts, params } = this.props;
+    const { accounts, token } = this.props;
     this.setState({
       formError: '',
     });
     try {
-      await accounts.resetPassword(params.token, password);
+      await accounts.resetPassword(token, password);
     } catch (err) {
       this.setState({
         formError: err.message,

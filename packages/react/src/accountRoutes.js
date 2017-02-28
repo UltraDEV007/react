@@ -65,11 +65,12 @@ const accountRoutes = ({
       <Route
         path={accounts.options().resetPasswordPath}
         component={
-          () =>
+          ({ params }) =>
             <Container>
               {withProps({
                 formType: FormTypes.RESET_PASSWORD,
                 accounts,
+                token: params.token,
               })(Component)()}
             </Container>
         }
