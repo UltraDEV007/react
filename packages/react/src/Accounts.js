@@ -3,6 +3,7 @@ import FormTypes from './FormTypes';
 import Login from './Login';
 import Signup from './Signup';
 import ForgotPassword from './ForgotPassword';
+import ResetPassword from './ResetPassword';
 
 class Accounts extends Component {
   static propTypes = {
@@ -11,15 +12,18 @@ class Accounts extends Component {
     loginComponents: PropTypes.object,
     signupComponents: PropTypes.object,
     forgotPasswordComponents: PropTypes.object,
+    resetPasswordComponents: PropTypes.object,
     Login: PropTypes.node,
     Signup: PropTypes.node,
     ForgotPassword: PropTypes.node,
+    ResetPassword: PropTypes.node,
   }
   static defaultProps = {
     formType: FormTypes.LOGIN,
     Login,
     Signup,
     ForgotPassword,
+    ResetPassword,
   }
   static childContextTypes = {
     accounts: PropTypes.object,
@@ -48,9 +52,11 @@ class Accounts extends Component {
       loginComponents,
       signupComponents,
       forgotPasswordComponents,
+      resetPasswordComponents,
       Login, // eslint-disable-line no-shadow
       Signup, // eslint-disable-line no-shadow
       ForgotPassword, // eslint-disable-line no-shadow
+      ResetPassword, // eslint-disable-line no-shadow
       ...otherProps
     } = this.props;
     switch (this.state.formType) {
@@ -76,6 +82,14 @@ class Accounts extends Component {
             accounts={accounts}
             setFormType={this.setFormType}
             {...forgotPasswordComponents}
+            {...otherProps}
+          />);
+      case FormTypes.RESET_PASSWORD:
+        return (
+          <ResetPassword
+            accounts={accounts}
+            setFormType={this.setFormType}
+            {...resetPasswordComponents}
             {...otherProps}
           />);
       default:

@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
-import {
-  Paper,
-} from 'material-ui';
+import Paper from 'material-ui/Paper';
 
 const style = {
   minWidth: 350,

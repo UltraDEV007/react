@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { withProps } from 'recompose';
+import withProps from 'recompose/withProps';
 import { Route } from 'react-router';
 import FormTypes from './FormTypes';
 
@@ -46,6 +46,31 @@ const accountRoutes = ({
               {withProps({
                 formType: FormTypes.SIGNUP,
                 accounts,
+              })(Component)()}
+            </Container>
+        }
+      />
+      <Route
+        path={accounts.options().forgotPasswordPath}
+        component={
+          () =>
+            <Container>
+              {withProps({
+                formType: FormTypes.FORGOT_PASSWORD,
+                accounts,
+              })(Component)()}
+            </Container>
+        }
+      />
+      <Route
+        path={accounts.options().resetPasswordPath}
+        component={
+          ({ params }) =>
+            <Container>
+              {withProps({
+                formType: FormTypes.RESET_PASSWORD,
+                accounts,
+                token: params.token,
               })(Component)()}
             </Container>
         }

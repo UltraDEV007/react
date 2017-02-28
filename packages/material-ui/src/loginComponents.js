@@ -1,15 +1,11 @@
 /* eslint-disable no-shadow */
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
-import { getContext } from 'recompose';
-import {
-  Avatar as MuiAvatar,
-  TextField,
-  RaisedButton,
-} from 'material-ui';
-import {
-  SocialPerson,
-} from 'material-ui/svg-icons';
+import getContext from 'recompose/getContext';
+import MuiAvatar from 'material-ui/Avatar';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import SocialPerson from 'material-ui/svg-icons/social/person';
 import Container from './Container';
 import Content from './Content';
 import FormError from './FormError';
