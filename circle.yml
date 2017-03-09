@@ -1,6 +1,11 @@
 machine:
   node:
     version: 6.2.1
+
+dependencies:
+  post:
+    - npm install react react-native @accounts/common @accounts/client
+
 test:
   post:
     - npm run coverage
