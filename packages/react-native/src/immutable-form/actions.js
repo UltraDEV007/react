@@ -28,7 +28,7 @@ export const errorForm = (formName: string) => (error: string | Error) => ({
   error,
 });
 
-const errorMessage = err => (typeof err !== 'string') ? err.message : err;
+const errorMessage = err => ((typeof err !== 'string') ? err.message : err);
 
 export const submitForm = (formName: string) => (submit: (Object) => Promise<any>) => () =>
   (dispatch: Dispatch<Object>, getState: Function) => {
@@ -40,7 +40,7 @@ export const submitForm = (formName: string) => (submit: (Object) => Promise<any
     submit(state).then(
       res => dispatch(approvedForm(formName)(res)),
       err => dispatch(errorForm(formName)(errorMessage(err))),
-    )
+    );
   };
 
 export const clearForm = (formName: string) => () => ({

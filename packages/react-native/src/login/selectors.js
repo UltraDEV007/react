@@ -34,5 +34,5 @@ export const selectPropsLoginForm = createSelector(
     submitting: loginState.submitting,
     disableSubmit: isEmpty(loginState.user.value) || isEmpty(loginState.password.value),
     error: loginState.error || user.error || password.error,
-  })
+  }),
 );

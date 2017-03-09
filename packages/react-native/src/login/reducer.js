@@ -6,10 +6,10 @@ import { createFormReducer } from '../immutable-form/reducer';
 import { Field } from '../immutable-form/state';
 
 const validateUserField = value =>
-  !validators.validateEmail(value) && !validators.validateUsername(value) ?
-    'Invalid username or email!': null;
+  (!validators.validateEmail(value) && !validators.validateUsername(value) ?
+    'Invalid username or email!' : null);
 
-const validatePassword = value => !validators.validatePassword(value) ? 'Invalid password' : null;
+const validatePassword = value => (!validators.validatePassword(value) ? 'Invalid password' : null);
 
 // State definition
 

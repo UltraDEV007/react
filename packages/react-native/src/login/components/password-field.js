@@ -17,8 +17,8 @@ export class PasswordField extends Component {
     autoFocus: false,
     blurOnSubmit: true,
     autoCorrect: false,
-    placeholder: "Password",
-    autoCapitalize: "none",
+    placeholder: 'Password',
+    autoCapitalize: 'none',
     shouldRenderErrorLabel: true,
     containerStyle: null,
   };
@@ -61,6 +61,7 @@ export class PasswordField extends Component {
         <TextInput
           {...restProps}
           style={[styles.simpleInput, style]}
+          // eslint-disable-next-line no-return-assign
           ref={ref => this.textInput = ref}
         />
 

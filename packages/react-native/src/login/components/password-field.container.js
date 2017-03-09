@@ -1,11 +1,11 @@
 // @flow
 
 import { connect } from 'react-redux';
+import type { Dispatch } from 'redux';
 import { PasswordField } from './password-field';
 import { passwordFieldUpdate } from '../actions';
 import { selectPropsPasswordField } from '../selectors';
-import { storeKey } from '../../reducer';
-import type { Dispatch } from 'redux';
+import { getStoreKey } from '../../reducer';
 
 function mapDispatch(dispatch: Dispatch<Object>) {
   return {
@@ -13,8 +13,9 @@ function mapDispatch(dispatch: Dispatch<Object>) {
   };
 }
 
-const mapState = (state: Object) => selectPropsPasswordField(state[storeKey]);
+const mapState = (state: Object) => selectPropsPasswordField(state[getStoreKey()]);
 
-const PasswordFieldContainer = connect(mapState, mapDispatch, null, { withRef: true })(PasswordField);
+const PasswordFieldContainer =
+  connect(mapState, mapDispatch, null, { withRef: true })(PasswordField);
 
 export default PasswordFieldContainer;

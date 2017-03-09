@@ -1,17 +1,17 @@
 // @flow
 
 import { connect } from 'react-redux';
-import { storeKey } from '../reducer';
-import { LoginForm } from './login-form'
+import type { Dispatch } from 'redux';
+import { getStoreKey } from '../reducer';
+import { LoginForm } from './login-form';
 import { selectPropsLoginForm } from './selectors';
 import { submitLoginForm } from './actions';
-import type { Dispatch } from 'redux';
 
 const mapDispatch = (dispatch: Dispatch<Object>) => ({
   onSubmit: () => dispatch(submitLoginForm()),
 });
 
-const mapState = (state: Object) => selectPropsLoginForm(state[storeKey]);
+const mapState = (state: Object) => selectPropsLoginForm(state[getStoreKey()]);
 
 const LoginFormContainer = connect(mapState, mapDispatch)(LoginForm);
 

@@ -16,8 +16,8 @@ export class UserField extends Component {
     autoFocus: true,
     blurOnSubmit: true,
     autoCorrect: false,
-    placeholder: "Username / Email",
-    autoCapitalize: "none",
+    placeholder: 'Username / Email',
+    autoCapitalize: 'none',
     shouldRenderErrorLabel: true,
     containerStyle: null,
   };
@@ -60,6 +60,7 @@ export class UserField extends Component {
         <TextInput
           {...restProps}
           style={[styles.simpleInput, style]}
+          // eslint-disable-next-line no-return-assign
           ref={ref => this.textInput = ref}
         />
 

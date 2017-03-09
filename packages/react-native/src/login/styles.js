@@ -20,5 +20,5 @@ export const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingBottom: 5,
     paddingHorizontal: 5,
-  }
+  },
 });

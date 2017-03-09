@@ -1,4 +1,4 @@
-import {createReducer, filterActions} from '../redux/util';
+import { createReducer, filterActions } from '../redux/util';
 
 import {
   FIELD_UPDATED,
@@ -24,10 +24,10 @@ const formReducer = initialState => createReducer(initialState, {
   [FIELD_ERROR]: (state, action) => state.setIn([action.fieldName, 'error'], action.error),
 
   // Per form reducer
-  [FORM_SUBMITTED]: (state, action) => state.set('submitting', true),
-  [FORM_APPROVED]: (state, action) => state.set('submitting', false),
+  [FORM_SUBMITTED]: state => state.set('submitting', true),
+  [FORM_APPROVED]: state => state.set('submitting', false),
   [FORM_ERROR]: (state, action) => state.set('error', action.error),
-  [FORM_CLEAR]: (state, action) => initialState,
+  [FORM_CLEAR]: () => initialState,
 });
 
 const formNameFilter = formName => action => action.formName === formName;

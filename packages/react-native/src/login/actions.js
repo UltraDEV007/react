@@ -2,13 +2,14 @@
 
 import AccountsClient from '@accounts/client';
 import { createFormActions } from '../immutable-form/actions';
-import { storeKey } from '../reducer';
+import { getStoreKey } from '../reducer';
 import { selectUserField, selectPasswordField } from './selectors';
+
 const actions = createFormActions('login');
 
 const accountsLogin = (state: Object) => AccountsClient.loginWithPassword(
-  selectUserField(state[storeKey]).value,
-  selectPasswordField(state[storeKey]).value,
+  selectUserField(state[getStoreKey()]).value,
+  selectPasswordField(state[getStoreKey()]).value,
 );
 
 export const submitLoginForm = actions.submitForm(accountsLogin);
