@@ -38,8 +38,14 @@ export const submitForm = (formName: string) => (submit: (Object) => Promise<any
     const state = getState();
 
     submit(state).then(
-      res => dispatch(approvedForm(formName)(res)),
-      err => dispatch(errorForm(formName)(errorMessage(err))),
+      res => {
+        dispatch(clearForm(formName)());
+        dispatch(approvedForm(formName)(res));
+      },
+      err => {
+        dispatch(clearForm(formName)());
+        dispatch(errorForm(formName)(errorMessage(err)));
+      },
     );
   };
 
