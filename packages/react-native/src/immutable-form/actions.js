@@ -42,10 +42,7 @@ export const submitForm = (formName: string) => (submit: (Object) => Promise<any
         dispatch(clearForm(formName)());
         dispatch(approvedForm(formName)(res));
       },
-      err => {
-        dispatch(clearForm(formName)());
-        dispatch(errorForm(formName)(errorMessage(err)));
-      },
+      err => dispatch(errorForm(formName)(errorMessage(err)))
     );
   };
 
