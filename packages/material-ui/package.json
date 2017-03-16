@@ -4,7 +4,7 @@
   "description": "React frontend build with material-ui for js-accounts",
   "main": "lib/index.js",
   "scripts": {
-    "start": "webpack -p --config --progress --watch",
+    "start": "babel --watch ./src --out-dir ./lib",
     "compile": "babel ./src --out-dir ./lib",
     "flow:check": "flow check",
     "prepublish": "npm run compile",
@@ -79,6 +79,7 @@
     "flexbox-react": "^4.1.0",
     "material-ui": "^0.16.4",
     "react-dom": "^15.4.0",
-    "react-redux": "^4.4.6"
+    "react-redux": "^4.4.6",
+    "recompose": "^0.22.0"
   }
 }

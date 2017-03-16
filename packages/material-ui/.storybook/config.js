@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import { configure, addDecorator, setAddon } from '@kadira/storybook';
 import { muiTheme } from 'storybook-addon-material-ui';
 import infoAddon from '@kadira/react-storybook-addon-info';

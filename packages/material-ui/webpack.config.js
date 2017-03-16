@@ -10,6 +10,7 @@ module.exports = {
     filename: 'index.js',
     library: '@accounts/react-material-ui',
     libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   modulesDirectories: [
     'src',

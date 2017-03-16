@@ -11,6 +11,7 @@ module.exports = {
     filename: 'index.js',
     library: '@accounts/react',
     libraryTarget: 'umd',
+    umdNamedDefine: true,
   },
   modulesDirectories: [
     'src',

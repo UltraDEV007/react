@@ -1,17 +1,19 @@
-import accountRoutes from './accountRoutes';
-import FormTypes from './FormTypes';
 import Accounts from './Accounts';
-import SignupFields from './SignupFields';
-import LoginFields from './LoginFields';
-import withUser from './withUser';
-import Authenticated from './Authenticated';
+import Login from './Login';
+import Signup from './Signup';
+import ForgotPassword from './ForgotPassword';
+import authenticate, { Authenticate } from './authenticate';
+import withCurrentUser, { WithCurrentUser } from './withCurrentUser';
+import accountRoutes from './accountRoutes';
 
 export {
-  accountRoutes,
-  FormTypes,
   Accounts,
-  SignupFields,
-  LoginFields,
-  withUser,
-  Authenticated,
+  Login,
+  Signup,
+  ForgotPassword,
+  authenticate,
+  Authenticate,
+  withCurrentUser,
+  WithCurrentUser,
+  accountRoutes,
 };
