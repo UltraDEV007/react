@@ -2,20 +2,12 @@
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
 import getContext from 'recompose/getContext';
-import MuiAvatar from 'material-ui/Avatar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import SocialPerson from 'material-ui/svg-icons/social/person';
 import Container from './Container';
 import Content from './Content';
 import FormError from './FormError';
-
-const Avatar = () =>
-  <MuiAvatar
-    size={96} icon={<SocialPerson />} style={{
-      marginBottom: 10,
-    }}
-  />;
+import Avatar from './components/avatar';
+import PasswordField from './components/password';
+import SubmitButton from './components/submitButton';
 
 const ResetPasswordFields = ({ children }) =>
   <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
@@ -25,38 +17,6 @@ const ResetPasswordFields = ({ children }) =>
 ResetPasswordFields.propTypes = {
   children: PropTypes.node,
 };
-
-const ResetPasswordPasswordField = ({ ...otherProps }) =>
-  <TextField
-    hintText="New password"
-    type="password"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const ResetPasswordPasswordConfirmField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Confirm new password"
-    type="password"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const ResetPasswordButton = ({ ...otherProps }) =>
-  <RaisedButton
-    primary
-    fullWidth
-    label="Save"
-    style={{
-      marginTop: 10,
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
 
 const Header = getContext({
   accounts: PropTypes.object,
@@ -103,9 +63,9 @@ export default {
   Content,
   Avatar,
   ResetPasswordFields,
-  ResetPasswordPasswordField,
-  ResetPasswordPasswordConfirmField,
-  ResetPasswordButton,
+  ResetPasswordPasswordField: PasswordField,
+  ResetPasswordPasswordConfirmField: PasswordField,
+  ResetPasswordButton: SubmitButton,
   Header,
   Footer,
   FormError,

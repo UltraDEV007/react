@@ -68,6 +68,7 @@ class ForgotPassword extends Component {
           {() =>
             <ForgotPasswordEmailField
               {...form}
+              label="Email"
               value={form.getValue('email', '')}
               onChange={e => form.setValue('email', e.target.value)}
               errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
@@ -102,6 +103,7 @@ class ForgotPassword extends Component {
               <div>
                 {this.renderForgotPasswordFields(form)}
                 <ForgotPasswordButton
+                  label="Recover my password"
                   onClick={form.submitForm}
                 />
               </div>

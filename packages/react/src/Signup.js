@@ -125,6 +125,7 @@ class Signup extends Component {
               {() =>
                 <SignupEmailField
                   {...form}
+                  label="Email"
                   value={form.getValue('email', '')}
                   onChange={e => form.setValue('email', e.target.value)}
                   errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
@@ -135,6 +136,7 @@ class Signup extends Component {
               {() =>
                 <SignupPasswordField
                   {...form}
+                  label="Password"
                   value={form.getValue('password', '')}
                   onChange={e => form.setValue('password', e.target.value)}
                   errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
@@ -145,6 +147,7 @@ class Signup extends Component {
               {() =>
                 <SignupPasswordConfirmField
                   {...form}
+                  label="Confirm password"
                   value={form.getValue('passwordConfirm', '')}
                   onChange={e => form.setValue('passwordConfirm', e.target.value)}
                   errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
@@ -159,6 +162,7 @@ class Signup extends Component {
               {() =>
                 <SignupUsernameField
                   {...form}
+                  label="Username"
                   value={form.getValue('username', '')}
                   onChange={e => form.setValue('username', e.target.value)}
                   errorText={form.getTouched('username') && isString(form.getError('username')) ? form.getError('username') : ''}
@@ -169,6 +173,7 @@ class Signup extends Component {
               {() =>
                 <SignupPasswordField
                   {...form}
+                  label="Password"
                   value={form.getValue('password', '')}
                   onChange={e => form.setValue('password', e.target.value)}
                   errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
@@ -179,6 +184,7 @@ class Signup extends Component {
               {() =>
                 <SignupPasswordConfirmField
                   {...form}
+                  label="Confirm password"
                   value={form.getValue('passwordConfirm', '')}
                   onChange={e => form.setValue('passwordConfirm', e.target.value)}
                   errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
@@ -194,6 +200,7 @@ class Signup extends Component {
               {() =>
                 <SignupUsernameField
                   {...form}
+                  label="Username"
                   value={form.getValue('username', '')}
                   onChange={e => form.setValue('username', e.target.value)}
                   errorText={form.getTouched('username') && isString(form.getError('username')) ? form.getError('username') : ''}
@@ -202,6 +209,7 @@ class Signup extends Component {
             </FormInput>
             <SignupEmailField
               {...form}
+              label="Email"
               value={form.getValue('email', '')}
               onChange={e => form.setValue('email', e.target.value)}
               errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
@@ -210,6 +218,7 @@ class Signup extends Component {
               {() =>
                 <SignupPasswordField
                   {...form}
+                  label="Password"
                   value={form.getValue('password', '')}
                   onChange={e => form.setValue('password', e.target.value)}
                   errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
@@ -220,6 +229,7 @@ class Signup extends Component {
               {() =>
                 <SignupPasswordConfirmField
                   {...form}
+                  label="Confirm password"
                   value={form.getValue('passwordConfirm', '')}
                   onChange={e => form.setValue('passwordConfirm', e.target.value)}
                   errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
@@ -233,22 +243,26 @@ class Signup extends Component {
           <SignupFields>
             <SignupUsernameField
               {...form}
+              label="Username"
               onChange={e => this.onChangeUsernameField(e)}
               errorText={this.state.usernameFieldErrorText}
             />
             <SignupEmailOptionalField
               {...form}
+              label="Email (optional)"
               value={form.getValue('email', '')}
               onChange={e => form.setValue('email', e.target.value)}
               errorText={form.getTouched('email') && isString(form.getError('email')) ? form.getError('email') : ''}
             />
             <SignupPasswordField
               {...form}
+              label="Password"
               onChange={e => this.onChangePasswordField(e)}
               errorText={this.state.passwordFieldErrorText}
             />
             <SignupPasswordConfirmField
               {...form}
+              label="Confirm password"
               onChange={e => this.onChangePasswordConfirmField(e)}
               errorText={this.state.passwordConfirmFieldErrorText}
             />
@@ -282,6 +296,7 @@ class Signup extends Component {
               <div>
                 {this.renderSignupFields(form)}
                 <SignupButton
+                  label="Sign up"
                   onClick={form.submitForm}
                 />
               </div>

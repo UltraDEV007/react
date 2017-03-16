@@ -81,6 +81,7 @@ class Login extends Component {
                   {() =>
                     <LoginUserField
                       {...form}
+                      label="Username or email"
                       value={form.getValue('user', '')}
                       onChange={e => form.setValue('user', e.target.value)}
                       errorText={form.getTouched('user') && isString(form.getError('user')) ? form.getError('user') : ''}
@@ -91,6 +92,7 @@ class Login extends Component {
                   {() =>
                     <LoginPasswordField
                       {...form}
+                      label="Password"
                       onChange={e => form.setValue('password', e.target.value)}
                       value={form.getValue('password', '')}
                       errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
@@ -98,6 +100,7 @@ class Login extends Component {
                   }
                 </FormInput>
                 <LoginButton
+                  label="Sign in"
                   onClick={form.submitForm}
                   {...otherProps}
                 />

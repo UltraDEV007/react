@@ -2,20 +2,13 @@
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
 import getContext from 'recompose/getContext';
-import MuiAvatar from 'material-ui/Avatar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import SocialPerson from 'material-ui/svg-icons/social/person';
 import Container from './Container';
 import Content from './Content';
 import FormError from './FormError';
-
-const Avatar = () =>
-  <MuiAvatar
-    size={96} icon={<SocialPerson />} style={{
-      marginBottom: 10,
-    }}
-  />;
+import Avatar from './components/avatar';
+import EmailField from './components/email';
+import PasswordField from './components/password';
+import SubmitButton from './components/submitButton';
 
 const SignupFields = ({ children }) =>
   <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
@@ -25,64 +18,6 @@ const SignupFields = ({ children }) =>
 SignupFields.propTypes = {
   children: PropTypes.node,
 };
-
-const SignupEmailField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Email"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const SignupEmailOptionalField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Email (optional)"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const SignupUsernameField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Username"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const SignupPasswordField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Password"
-    type="password"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const SignupPasswordConfirmField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Confirm password"
-    type="password"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const SignupButton = ({ ...otherProps }) =>
-  <RaisedButton
-    primary
-    fullWidth
-    label="Sign up"
-    style={{
-      marginTop: 10,
-    }}
-    {...otherProps}
-  />;
 
 const LoginButton = getContext({
   setFormType: PropTypes.func,
@@ -127,12 +62,12 @@ export default {
   Content,
   Avatar,
   SignupFields,
-  SignupEmailOptionalField,
-  SignupEmailField,
-  SignupUsernameField,
-  SignupPasswordField,
-  SignupPasswordConfirmField,
-  SignupButton,
+  SignupEmailOptionalField: EmailField,
+  SignupEmailField: EmailField,
+  SignupUsernameField: EmailField,
+  SignupPasswordField: PasswordField,
+  SignupPasswordConfirmField: PasswordField,
+  SignupButton: SubmitButton,
   LoginButton,
   Header,
   Footer,
