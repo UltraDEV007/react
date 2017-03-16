@@ -5,6 +5,7 @@ import getContext from 'recompose/getContext';
 import Container from './Container';
 import Content from './Content';
 import FormError from './FormError';
+import Header from './components/header';
 import Avatar from './components/avatar';
 import EmailField from './components/email';
 import PasswordField from './components/password';
@@ -54,21 +55,6 @@ const SignupButton = getContext({
       Create account
     </a>
   </Flexbox>);
-
-const Header = getContext({
-  accounts: PropTypes.object,
-})(({ accounts }) =>
-  <div
-    style={{
-      fontSize: 32,
-      fontWeight: 400,
-      fontFamily: 'Roboto',
-      marginBottom: 10,
-    }}
-  >
-    {accounts.options().title}
-  </div>,
-  );
 
 const Footer = ({ ...otherProps }) =>
   <SignupButton {...otherProps} />;
