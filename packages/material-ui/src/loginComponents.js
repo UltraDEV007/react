@@ -2,20 +2,14 @@
 import React, { PropTypes } from 'react';
 import Flexbox from 'flexbox-react';
 import getContext from 'recompose/getContext';
-import MuiAvatar from 'material-ui/Avatar';
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
-import SocialPerson from 'material-ui/svg-icons/social/person';
 import Container from './Container';
 import Content from './Content';
 import FormError from './FormError';
-
-const Avatar = () =>
-  <MuiAvatar
-    size={96} icon={<SocialPerson />} style={{
-      marginBottom: 10,
-    }}
-  />;
+import Header from './components/header';
+import Avatar from './components/avatar';
+import EmailField from './components/email';
+import PasswordField from './components/password';
+import SubmitButton from './components/submitButton';
 
 const LoginFields = ({ children }) =>
   <Flexbox flexDirection="column" justifyContent="center" alignItems="center">
@@ -25,37 +19,6 @@ const LoginFields = ({ children }) =>
 LoginFields.propTypes = {
   children: PropTypes.node,
 };
-
-const LoginUserField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Username or email"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const LoginPasswordField = ({ ...otherProps }) =>
-  <TextField
-    hintText="Password"
-    type="password"
-    style={{
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
-
-const LoginButton = ({ ...otherProps }) =>
-  <RaisedButton
-    primary
-    fullWidth
-    label="Sign in"
-    style={{
-      marginTop: 10,
-      marginBottom: 10,
-    }}
-    {...otherProps}
-  />;
 
 const RecoverButton = getContext({
   setFormType: PropTypes.func,
@@ -93,21 +56,6 @@ const SignupButton = getContext({
     </a>
   </Flexbox>);
 
-const Header = getContext({
-  accounts: PropTypes.object,
-})(({ accounts }) =>
-  <div
-    style={{
-      fontSize: 32,
-      fontWeight: 400,
-      fontFamily: 'Roboto',
-      marginBottom: 10,
-    }}
-  >
-    {accounts.options().title}
-  </div>,
-  );
-
 const Footer = ({ ...otherProps }) =>
   <SignupButton {...otherProps} />;
 
@@ -120,10 +68,10 @@ export default {
   Content,
   Avatar,
   LoginFields,
-  LoginUserField,
-  LoginPasswordField,
+  LoginUserField: EmailField,
+  LoginPasswordField: PasswordField,
   RecoverButton,
-  LoginButton,
+  LoginButton: SubmitButton,
   SignupButton,
   Header,
   Footer,

@@ -72,6 +72,7 @@ class ResetPassword extends Component {
           {() =>
             <ResetPasswordPasswordField
               {...form}
+              label="New password"
               value={form.getValue('password', '')}
               onChange={e => form.setValue('password', e.target.value)}
               errorText={form.getTouched('password') && isString(form.getError('password')) ? form.getError('password') : ''}
@@ -82,6 +83,7 @@ class ResetPassword extends Component {
           {() =>
             <ResetPasswordPasswordConfirmField
               {...form}
+              label="Confirm new password"
               value={form.getValue('passwordConfirm', '')}
               onChange={e => form.setValue('passwordConfirm', e.target.value)}
               errorText={form.getTouched('passwordConfirm') && isString(form.getError('passwordConfirm')) ? form.getError('passwordConfirm') : ''}
@@ -116,6 +118,7 @@ class ResetPassword extends Component {
               <div>
                 {this.renderResetPasswordFields(form)}
                 <ResetPasswordButton
+                  label="Save"
                   onClick={form.submitForm}
                 />
               </div>
