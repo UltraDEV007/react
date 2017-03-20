@@ -1,43 +1,19 @@
-import AccountsClient from '@accounts/client';
 import Accounts from './Accounts';
-import Title from './Title';
-import Services from './Services';
-import LoginForm from './LoginForm';
-import SignupForm from './SignupForm';
+import loginComponents from './loginComponents';
+import signupComponents from './signupComponents';
+import forgotPasswordComponents from './forgotPasswordComponents';
+import Container from './Container';
+import Content from './Content';
+import FormError from './FormError';
 
-import {
-  UserField,
-  PasswordField,
-  PasswordConfirmField,
-  EmailField,
-  UsernameField,
-  EmailOptionalField,
-} from './Fields';
-
-const components = {
-  Accounts,
-  LoginForm,
-  SignupForm,
-  UserField,
-  PasswordField,
-  PasswordConfirmField,
-  EmailField,
-  UsernameField,
-  EmailOptionalField,
-};
-
-AccountsClient.ui = components;
+export default Accounts;
 
 export {
-  Title,
-  Services,
+  Container,
+  Content,
+  FormError,
   Accounts,
-  LoginForm,
-  SignupForm,
-  UserField,
-  PasswordField,
-  PasswordConfirmField,
-  EmailField,
-  UsernameField,
-  EmailOptionalField,
+  loginComponents,
+  signupComponents,
+  forgotPasswordComponents,
 };
