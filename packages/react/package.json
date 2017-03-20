@@ -1,6 +1,6 @@
 {
   "name": "@accounts/react",
-  "version": "0.0.6",
+  "version": "0.0.8",
   "description": "React frontend for js-accounts",
   "main": "lib/index.js",
   "scripts": {
