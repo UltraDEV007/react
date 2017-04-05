@@ -72,12 +72,14 @@
     "webpack": "^1.13.3",
     "webpack-node-externals": "^1.5.4"
   },
+  "peerDependencies": {
+    "@accounts/client": "^0.0.15",
+    "@accounts/common": "^0.0.15",
+    "material-ui": "^0.16.4"
+  },
   "dependencies": {
-    "@accounts/client": "0.0.3",
-    "@accounts/common": "0.0.3",
     "@accounts/react": "^0.0.9",
     "flexbox-react": "^4.1.0",
-    "material-ui": "^0.16.4",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
     "recompose": "^0.22.0"

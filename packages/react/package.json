@@ -68,9 +68,11 @@
     "webpack-node-externals": "^1.5.4",
     "@kadira/storybook": "^2.21.0"
   },
+  "peerDependencies": {
+    "@accounts/client": "^0.0.15",
+    "@accounts/common": "^0.0.15"
+  },
   "dependencies": {
-    "@accounts/client": "next",
-    "@accounts/common": "next",
     "react": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^3.0.0",
