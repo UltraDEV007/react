@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import FormTypes from './FormTypes';
 import Login from './Login';
 import Signup from './Signup';

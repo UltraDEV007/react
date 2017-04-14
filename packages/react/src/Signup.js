@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { PasswordSignupFields, validators } from '@accounts/common';
 import isString from 'lodash/isString';
 import { Form, FormInput } from 'react-form';
