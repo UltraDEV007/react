@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types';
 /* eslint-disable no-shadow */
-import React, { PropTypes } from 'react';
+import React from 'react';
 import Flexbox from 'flexbox-react';
 import getContext from 'recompose/getContext';
 import Container from './Container';

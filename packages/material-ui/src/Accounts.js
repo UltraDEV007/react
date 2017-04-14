@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { Accounts as AccountsBase } from '@accounts/react';
 import merge from 'lodash/merge';
 import _loginComponents from './loginComponents';
