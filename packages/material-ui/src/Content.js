@@ -28,7 +28,7 @@ const Content = ({ children, noPaper }) =>
 
 Content.propTypes = {
   children: PropTypes.node,
-  noPaper: PropTypes.boolean,
+  noPaper: PropTypes.bool,
 };
 
 Content.defaltProps = {
