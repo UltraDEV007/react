@@ -1,5 +1,6 @@
+import PropTypes from 'prop-types';
 /* eslint-disable react/no-did-mount-set-state */
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 class WithCurrentUser extends React.Component {
   static propTypes = {

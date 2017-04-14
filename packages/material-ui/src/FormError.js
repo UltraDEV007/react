@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import { red500 } from 'material-ui/styles/colors';
 
 const FormError = ({ errorText }) =>

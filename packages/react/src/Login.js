@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import isString from 'lodash/isString';
 import { Form, FormInput } from 'react-form';
 
@@ -6,18 +7,18 @@ class Login extends Component {
   static propTypes = {
     accounts: PropTypes.object,
     setFormType: PropTypes.func,
-    Avatar: PropTypes.node,
-    LoginFields: PropTypes.node,
-    LoginUserField: PropTypes.node,
-    LoginPasswordField: PropTypes.node,
-    RecoverButton: PropTypes.node,
-    LoginButton: PropTypes.node,
-    SignupButton: PropTypes.node,
-    Header: PropTypes.node,
-    Footer: PropTypes.node,
-    Container: PropTypes.node,
-    Content: PropTypes.node,
-    FormError: PropTypes.node,
+    Avatar: PropTypes.func,
+    LoginFields: PropTypes.func,
+    LoginUserField: PropTypes.func,
+    LoginPasswordField: PropTypes.func,
+    RecoverButton: PropTypes.func,
+    LoginButton: PropTypes.func,
+    SignupButton: PropTypes.func,
+    Header: PropTypes.func,
+    Footer: PropTypes.func,
+    Container: PropTypes.func,
+    Content: PropTypes.func,
+    FormError: PropTypes.func,
   }
   static defaultProps = {
     Container: () => <div />,

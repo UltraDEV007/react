@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { PasswordSignupFields, validators } from '@accounts/common';
 import isString from 'lodash/isString';
 import { Form, FormInput } from 'react-form';
@@ -6,19 +7,19 @@ import { Form, FormInput } from 'react-form';
 class Signup extends Component {
   static propTypes = {
     accounts: PropTypes.object,
-    Container: PropTypes.node,
-    Content: PropTypes.node,
-    Avatar: PropTypes.node,
-    SignupFields: PropTypes.node,
-    SignupEmailOptionalField: PropTypes.node,
-    SignupEmailField: PropTypes.node,
-    SignupUsernameField: PropTypes.node,
-    SignupPasswordField: PropTypes.node,
-    SignupPasswordConfirmField: PropTypes.node,
-    SignupButton: PropTypes.node,
-    Header: PropTypes.node,
-    Footer: PropTypes.node,
-    FormError: PropTypes.node,
+    Container: PropTypes.func,
+    Content: PropTypes.func,
+    Avatar: PropTypes.func,
+    SignupFields: PropTypes.func,
+    SignupEmailOptionalField: PropTypes.func,
+    SignupEmailField: PropTypes.func,
+    SignupUsernameField: PropTypes.func,
+    SignupPasswordField: PropTypes.func,
+    SignupPasswordConfirmField: PropTypes.func,
+    SignupButton: PropTypes.func,
+    Header: PropTypes.func,
+    Footer: PropTypes.func,
+    FormError: PropTypes.func,
   }
   constructor(props, context) {
     super(props, context);

@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 /* eslint-disable react/no-did-mount-set-state */
-import React, { PropTypes } from 'react';
+import React from 'react';
 import FormTypes from './FormTypes';
 
 class Authenticate extends React.Component {
   static propTypes = {
     accounts: PropTypes.object,
-    Loading: PropTypes.node,
-    Dialog: PropTypes.node,
+    Loading: PropTypes.func,
+    Dialog: PropTypes.func,
     children: PropTypes.node,
   }
   constructor(props, context) {

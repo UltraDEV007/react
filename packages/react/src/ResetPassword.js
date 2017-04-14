@@ -1,20 +1,21 @@
-import React, { PropTypes, Component } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import isString from 'lodash/isString';
 import { Form, FormInput } from 'react-form';
 
 class ResetPassword extends Component {
   static propTypes = {
     accounts: PropTypes.object,
-    Container: PropTypes.node,
-    Content: PropTypes.node,
-    Avatar: PropTypes.node,
-    ResetPasswordFields: PropTypes.node,
-    ResetPasswordPasswordField: PropTypes.node,
-    ResetPasswordPasswordConfirmField: PropTypes.node,
-    ResetPasswordButton: PropTypes.node,
-    Header: PropTypes.node,
-    Footer: PropTypes.node,
-    FormError: PropTypes.node,
+    Container: PropTypes.func,
+    Content: PropTypes.func,
+    Avatar: PropTypes.func,
+    ResetPasswordFields: PropTypes.func,
+    ResetPasswordPasswordField: PropTypes.func,
+    ResetPasswordPasswordConfirmField: PropTypes.func,
+    ResetPasswordButton: PropTypes.func,
+    Header: PropTypes.func,
+    Footer: PropTypes.func,
+    FormError: PropTypes.func,
     token: PropTypes.string,
   }
 

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Flexbox from 'flexbox-react';
 import Paper from 'material-ui/Paper';
 
@@ -27,7 +28,7 @@ const Content = ({ children, noPaper }) =>
 
 Content.propTypes = {
   children: PropTypes.node,
-  noPaper: PropTypes.boolean,
+  noPaper: PropTypes.bool,
 };
 
 Content.defaltProps = {
