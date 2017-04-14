@@ -7,15 +7,15 @@ import { Form, FormInput } from 'react-form';
 class ForgotPassword extends Component {
   static propTypes = {
     accounts: PropTypes.object,
-    Container: PropTypes.node,
-    Content: PropTypes.node,
-    Avatar: PropTypes.node,
-    ForgotPasswordFields: PropTypes.node,
-    ForgotPasswordEmailField: PropTypes.node,
-    ForgotPasswordButton: PropTypes.node,
-    Header: PropTypes.node,
-    Footer: PropTypes.node,
-    FormError: PropTypes.node,
+    Container: PropTypes.func,
+    Content: PropTypes.func,
+    Avatar: PropTypes.func,
+    ForgotPasswordFields: PropTypes.func,
+    ForgotPasswordEmailField: PropTypes.func,
+    ForgotPasswordButton: PropTypes.func,
+    Header: PropTypes.func,
+    Footer: PropTypes.func,
+    FormError: PropTypes.func,
   }
 
   constructor(props, context) {

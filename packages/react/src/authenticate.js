@@ -6,8 +6,8 @@ import FormTypes from './FormTypes';
 class Authenticate extends React.Component {
   static propTypes = {
     accounts: PropTypes.object,
-    Loading: PropTypes.node,
-    Dialog: PropTypes.node,
+    Loading: PropTypes.func,
+    Dialog: PropTypes.func,
     children: PropTypes.node,
   }
   constructor(props, context) {

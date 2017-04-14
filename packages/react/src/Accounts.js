@@ -14,10 +14,10 @@ class Accounts extends Component {
     signupComponents: PropTypes.object,
     forgotPasswordComponents: PropTypes.object,
     resetPasswordComponents: PropTypes.object,
-    Login: PropTypes.node,
-    Signup: PropTypes.node,
-    ForgotPassword: PropTypes.node,
-    ResetPassword: PropTypes.node,
+    Login: PropTypes.func,
+    Signup: PropTypes.func,
+    ForgotPassword: PropTypes.func,
+    ResetPassword: PropTypes.func,
   }
   static defaultProps = {
     formType: FormTypes.LOGIN,
