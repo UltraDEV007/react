@@ -8,7 +8,6 @@ const DefaultContainer = ({ children }) => children;
 
 const onEnter = accounts => async (nextState, replace, callback) => {
   try {
-    await accounts.resumeSession();
     if (accounts.user()) {
       replace(accounts.options().homePath);
     }

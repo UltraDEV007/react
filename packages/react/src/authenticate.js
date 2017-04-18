@@ -36,18 +36,6 @@ class Authenticate extends React.Component {
         });
       }
     });
-    if (this.mounted) {
-      try {
-        this.setState({
-          showDialog: false,
-        });
-        await accounts.resumeSession();
-      } catch (err) {
-        this.setState({
-          showDialog: true,
-        });
-      }
-    }
   }
   componentWillUnmount() {
     this.mounted = false;

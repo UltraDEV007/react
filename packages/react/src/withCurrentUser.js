@@ -10,7 +10,7 @@ class WithCurrentUser extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      user: null,
+      user: props.accounts.user() || null,
     };
   }
   async componentDidMount() {
@@ -33,9 +33,6 @@ class WithCurrentUser extends React.Component {
         });
       }
     });
-    try {
-      await accounts.resumeSession();
-    } catch (err) {} //eslint-disable-line
   }
   componentWillUnmount() {
     this.mounted = false;
